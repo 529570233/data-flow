@@ -1,0 +1,29 @@
+.cluster {
+    $side_nav_width: 260px;
+    .side_nav {
+        float: left;
+        width: $side_nav_width;
+        height: calc(100vh - 56px);
+        background-color: #0d1040;
+        padding-top: 30px;
+        .cluster_name {
+            color: #fff;
+            line-height: 40px;
+            padding-left: 24px;
+        }
+        .ant-menu {
+            border: none;
+            .ant-menu-item {
+                color: #fff;
+            }
+            .ant-menu-item-selected {
+                background-color: #161c6d;
+            }
+        }
+    }
+    .cluster_content {
+        float: left;
+        padding: 30px 100px;
+        width: calc(100% - #{$side_nav_width});
+    }
+}

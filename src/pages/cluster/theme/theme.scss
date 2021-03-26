@@ -1,0 +1,23 @@
+.theme_title {
+    line-height: 40px;
+}
+
+.theme_content {
+    padding-top: 20px;
+    .actions {
+        overflow: auto;
+        margin-bottom: 30px;
+        .search_box {
+            float: left;
+        }
+        .switch_box {
+            float: left;
+            margin-left: 50px;
+            padding-top: 3px;
+        }
+        .add_theme_box {
+            float: right;
+            @include btn_style;
+        }
+    }
+}

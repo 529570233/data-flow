@@ -1,0 +1,71 @@
+.home {
+    padding: 20px;
+    .cluster {
+        border-bottom: 1px solid #dadada;
+        padding-bottom: 20px;
+        .title {
+            line-height: 60px;
+        }
+        .category {
+            .category_item {
+                display: inline-block;
+                margin-right: 50px;
+                .health_btn {
+                    background-color: #2630bf;
+                    border: none;
+                }
+                .trouble_btn {
+                    background-color: #ffb140;
+                    border: none;
+                }
+                .category_name {
+                    display: inline-block;
+                    margin-left: 10px;
+                    font-size: 22px;
+                    font-weight: 600;
+                    color: #222222;
+                }
+            }
+        }
+    }
+    .cluster_wrap {
+        padding: 30px 0;
+        .cluster_list {
+            .ant-card {
+                box-shadow: 3px 3px 12px 0px #DDDCDC;
+                .ant-card-head {
+                    background-color: #2630bf;
+                    color: #fff;
+                    border-radius: 20px 20px 0px 0px;
+                    .ant-card-head-wrapper {
+                        .ant-card-head-title {
+                            flex: none;
+                            font-size: 20px;
+                        }
+                        .ant-card-extra {
+                            color: #fff;
+                            font-size: 14px;
+                            float: left;
+                            margin-left: 10px;
+                            padding: 2px 12px;
+                            background: #6d76fe;
+                            border-radius: 3px;
+                            border: 1px solid #c6c9fa;
+                        }
+                    }
+                }
+            }
+            .ant-list-item {
+                border: none;
+                padding-left: 10px;
+                padding-right: 10px;
+                &:nth-of-type(2n+1) {
+                    background-color: #F7F7FF;
+                }
+                &:nth-of-type(2n) {
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+$theme_color: #333fff; // 主题色
+$gray_color: #646464; // 灰色值
+@mixin form_item {
+    // 表单控件中label和表单的排列样式
+    .ant-form-item-label {
+        display: inline-block;
+        width: 80px;
+        text-align: left;
+        label {
+            color: #5a5a5a;
+        }
+    }
+    .ant-form-item-control-wrapper {
+        display: inline-block;
+    }
+}
+
+@mixin btn_style {
+    .ant-btn-primary {
+        background-color: $theme_color;
+    }
+}

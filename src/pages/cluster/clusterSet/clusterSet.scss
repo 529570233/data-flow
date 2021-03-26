@@ -1,0 +1,21 @@
+.clusterSet_title {
+    line-height: 40px;
+}
+
+.clusterSet_content {
+    padding-top: 20px;
+    .ant-tabs {
+        .ant-tabs-tab {
+            font-weight: 900;
+            &:hover {
+                color: $theme_color;
+            }
+        }
+        .ant-tabs-tab-active {
+            color: $theme_color;
+        }
+        .ant-tabs-ink-bar {
+            background-color: $theme_color;
+        }
+    }
+}

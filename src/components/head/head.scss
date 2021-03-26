@@ -1,0 +1,47 @@
+.head {
+    background-color: #0d1040 !important;
+    height: 56px;
+    line-height: 56px;
+    text-align: left !important;
+    .ant-menu-item,
+    .ant-menu-submenu {
+        color: #fff !important;
+        line-height: 56px !important;
+        transition: none !important;
+        &:hover {
+            border-bottom: 2px solid rgba(0, 0, 0, 0) !important;
+        }
+    }
+    .ant-menu-item {
+        display: inline-block !important;
+    }
+}
+
+.ant-menu-horizontal {
+    border-bottom: none !important;
+}
+
+.ant-menu-item a {
+    color: #fff !important;
+}
+
+.ant-menu-submenu-popup {
+    width: 100%;
+    .ant-menu-sub {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-top: 15px !important;
+        .ant-menu-item {
+            float: left;
+            margin-bottom: 15px;
+            margin-right: 20px;
+            background-color: $theme_color;
+            color: #fff;
+            border-radius: 4px;
+            height: auto;
+            width: auto;
+            line-height: 14px;
+            padding: 6px 15px;
+        }
+    }
+}
