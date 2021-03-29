@@ -12,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
+        
         <header className="header">
           <Head />
         </header>

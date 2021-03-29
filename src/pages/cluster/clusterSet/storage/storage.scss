@@ -15,7 +15,7 @@
         }
         .select_set {
             margin-top: 20px;
-            @include form_item;
+            @include form_item(inline-block, 80px);
             .ant-form-item {
                 margin-bottom: 0px;
             }
@@ -23,20 +23,41 @@
         @include btn_style;
     }
     .layer_storage {
-        @include margin_top(50px);
+        @include margin_top(40px);
         color: $gray_color;
     }
     .hide_set_layer_storage {
-        @include margin_top(50px);
+        @include margin_top(40px);
         color: $gray_color;
+        .ant-collapse {
+            background: none;
+            border: none;
+            .ant-collapse-item {
+                border-bottom: none;
+                .ant-collapse-header {
+                    padding: 0;
+                    padding-left: 20px;
+                    .anticon-right {
+                        left: 0;
+                        top: 42%;
+                    }
+                }
+            }
+            .ant-collapse-content {
+                border-top: none;
+                .ant-collapse-content-box {
+                    padding: 0;
+                }
+            }
+        }
         .ant-tabs-bar {
             border-bottom: none;
         }
         .ant-tabs-tab {
             margin-right: 0 !important;
-            border: 1px solid #26A7FF !important;
+            border: 1px solid #26a7ff !important;
             font-weight: normal;
-            background-color: #EBECFF !important;
+            background-color: #ebecff !important;
             color: $theme_color !important;
             height: 30px !important;
             line-height: 28px !important;
@@ -50,9 +71,14 @@
             }
         }
         .ant-tabs-tab-active {
-            border-bottom: 1px solid #26A7FF !important;
+            border-bottom: 1px solid #26a7ff !important;
             background-color: $theme_color !important;
             color: #fff !important;
+        }
+        .ant-tabs-tabpane {
+            margin-left: 10px;
+            border-left: 1px solid #ececec;
+            padding-left: 15px;
         }
     }
 }

@@ -1,17 +1,17 @@
 $theme_color: #333fff; // 主题色
 $gray_color: #646464; // 灰色值
-@mixin form_item {
+@mixin form_item($display, $label_width) {
     // 表单控件中label和表单的排列样式
     .ant-form-item-label {
-        display: inline-block;
-        width: 80px;
+        display: $display;
+        width: $label_width;
         text-align: left;
         label {
-            color: #5a5a5a;
+            color: $gray_color;
         }
     }
     .ant-form-item-control-wrapper {
-        display: inline-block;
+        display: $display;
     }
 }
 

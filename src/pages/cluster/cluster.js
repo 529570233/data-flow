@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 import "./cluster.scss";
-import { Menu, Icon } from "antd";
+import { Menu, Icon, Affix } from "antd";
 import Overview from "./overview/overview";
 import Agent from "./agent/agent";
 import Theme from "./theme/theme";
@@ -31,26 +31,30 @@ class Cluster extends Component {
     let { sidenav } = this.state;
     return (
       <div className="cluster">
-        <div className="side_nav">
-          <h2 className="cluster_name">集群1</h2>
-          <Menu
-            onClick={this.handleClick}
-            style={{ width: "100%", background: "none" }}
-            defaultSelectedKeys={["0"]}
-            mode="inline"
-          >
-            {sidenav.map((item, index) => {
-              let { title, link } = item;
-              return (
-                <Menu.Item key={index}>
-                  <NavLink to={link} exact>
-                    <Icon type="mail" />
-                    {title}
-                  </NavLink>
-                </Menu.Item>
-              );
-            })}
-          </Menu>
+        <div className="side_nav_wrap">
+          <Affix offsetTop={56}>
+            <div className="side_nav">
+              <h2 className="cluster_name">集群1</h2>
+              <Menu
+                onClick={this.handleClick}
+                style={{ width: "100%", background: "none" }}
+                defaultSelectedKeys={["0"]}
+                mode="inline"
+              >
+                {sidenav.map((item, index) => {
+                  let { title, link } = item;
+                  return (
+                    <Menu.Item key={index}>
+                      <NavLink to={link} exact>
+                        <Icon type="mail" />
+                        {title}
+                      </NavLink>
+                    </Menu.Item>
+                  );
+                })}
+              </Menu>
+            </div>
+          </Affix>
         </div>
         <div className="cluster_content">
           <Switch>

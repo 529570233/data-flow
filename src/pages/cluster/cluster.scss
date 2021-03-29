@@ -1,23 +1,25 @@
 .cluster {
     $side_nav_width: 260px;
-    .side_nav {
+    .side_nav_wrap {
         float: left;
         width: $side_nav_width;
-        height: calc(100vh - 56px);
-        background-color: #0d1040;
-        padding-top: 30px;
-        .cluster_name {
-            color: #fff;
-            line-height: 40px;
-            padding-left: 24px;
-        }
-        .ant-menu {
-            border: none;
-            .ant-menu-item {
+        .side_nav {
+            padding-top: 30px;
+            height: calc(100vh - 56px);
+            background-color: #0d1040;
+            .cluster_name {
                 color: #fff;
+                line-height: 40px;
+                padding-left: 24px;
             }
-            .ant-menu-item-selected {
-                background-color: #161c6d;
+            .ant-menu {
+                border: none;
+                .ant-menu-item {
+                    color: #fff;
+                }
+                .ant-menu-item-selected {
+                    background-color: #161c6d;
+                }
             }
         }
     }
