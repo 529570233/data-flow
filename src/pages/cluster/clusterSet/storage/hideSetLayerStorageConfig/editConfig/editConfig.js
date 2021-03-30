@@ -5,18 +5,11 @@ import { Form, Select, Button, Input } from "antd";
 const { Option } = Select;
 
 class EditConfig extends Component {
-  viewConfig() {
-    let { S3IsEditConfig } = this.state;
-    if (!S3IsEditConfig) return;
-    this.setState(state => {
-      return {
-        S3IsEditConfig: false,
-      };
-    });
-  }
-
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const {
+      form: { getFieldDecorator },
+      toggleConfig,
+    } = this.props;
     return (
       <Form onSubmit={this.handleSubmit} className="view_config">
         <Form.Item label="默认情况下启用主题分层">
@@ -57,7 +50,7 @@ class EditConfig extends Component {
           <Button
             type="primary"
             style={{ marginRight: "20px" }}
-            onClick={() => this.viewConfig()}
+            onClick={() => toggleConfig(false)}
           >
             取消
           </Button>

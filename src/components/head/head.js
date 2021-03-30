@@ -11,20 +11,23 @@ class Header extends Component {
         <Menu mode="horizontal" className="head">
           <Menu.Item key="logo">
             <NavLink to="/home" exact>
-              <span className="icon-1">
-                <span className="path1"></span>
-                <span className="path2"></span>
-                <span className="path3"></span>
-                <span className="path4"></span>
-              </span>
+              <span>LOGO</span>
               <span style={{ fontSize: "22px" }}>流式数据引擎处理</span>
             </NavLink>
           </Menu.Item>
           <SubMenu
+            popupClassName="cluster_drop_menu"
             title={
               <span className="submenu-title-wrapper">
-                <Icon type="setting" />
-                <span style={{ fontSize: "16px" }}>集群</span>
+                <span className="icon-12 data_flow_icon">
+                  <span className="path1"></span>
+                  <span className="path2"></span>
+                  <span className="path3"></span>
+                  <span className="path4"></span>
+                  <span className="path5"></span>
+                  <span className="path6"></span>
+                </span>
+                <span>集群</span>
               </span>
             }
           >

@@ -15,7 +15,9 @@
             .ant-menu {
                 border: none;
                 .ant-menu-item {
-                    color: #fff;
+                    a {
+                        color: #fff;
+                    }
                 }
                 .ant-menu-item-selected {
                     background-color: #161c6d;

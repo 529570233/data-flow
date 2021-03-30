@@ -13,9 +13,9 @@ function App() {
     <BrowserRouter>
       <div className="app">
         
-        <header className="header">
+        {/* <header className="header"> */}
           <Head />
-        </header>
+        {/* </header> */}
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path="/home" exact component={Home} />

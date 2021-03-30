@@ -1,47 +1,67 @@
 .head {
-    background-color: #0d1040 !important;
-    height: 56px;
-    line-height: 56px;
-    text-align: left !important;
-    .ant-menu-item,
+    $head_height: 60px;
+    background-color: #0d1040;
+    height: $head_height;
+    line-height: $head_height;
+    border-bottom: none;
     .ant-menu-submenu {
-        color: #fff !important;
-        line-height: 56px !important;
-        transition: none !important;
+        top: 0;
+        color: #fff;
+        border-bottom: none !important;
         &:hover {
-            border-bottom: 2px solid rgba(0, 0, 0, 0) !important;
+            color: #fff;
+        }
+        .ant-menu-submenu-title {
+            &:hover {
+                color: #fff;
+            }
         }
     }
     .ant-menu-item {
-        display: inline-block !important;
+        border-bottom: none !important;
+        top: 0;
+        &:hover {
+            background-color: $theme_color;
+            a {
+                color: #fff;
+            }
+        }
+        a {
+            height: $head_height;
+            color: #fff;
+        }
+    }
+    .ant-menu-submenu-active {
+        background-color: $theme_color;
     }
 }
 
-.ant-menu-horizontal {
-    border-bottom: none !important;
-}
-
-.ant-menu-item a {
-    color: #fff !important;
-}
-
-.ant-menu-submenu-popup {
+.cluster_drop_menu {
     width: 100%;
     .ant-menu-sub {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        padding-top: 15px !important;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 15px;
         .ant-menu-item {
             float: left;
             margin-bottom: 15px;
             margin-right: 20px;
-            background-color: $theme_color;
-            color: #fff;
+            background: #ebecff;
+            border: 1px solid #bcc0ff;
             border-radius: 4px;
             height: auto;
             width: auto;
             line-height: 14px;
-            padding: 6px 15px;
+            padding: 8px 18px;
+            a {
+                color: $theme_color;
+            }
+        }
+        .ant-menu-item-active {
+            background-color: $theme_color;
+            a {
+                color: #fff;
+            }
         }
     }
 }

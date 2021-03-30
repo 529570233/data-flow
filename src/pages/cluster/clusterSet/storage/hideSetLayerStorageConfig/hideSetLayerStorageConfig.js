@@ -9,6 +9,13 @@ class HideSetLayerStorageConfig extends Component {
   state = {
     isEditConfig: false,
   };
+  toggleConfig(editConfig) {
+    this.setState(state => {
+      return {
+        isEditConfig: editConfig,
+      };
+    });
+  }
   render() {
     let { isEditConfig } = this.state;
     let {
@@ -37,7 +44,14 @@ class HideSetLayerStorageConfig extends Component {
         <div className="list">
           <h5>{thirdTitle}</h5>
           {thirdTip ? <p>{thirdTip}</p> : null}
-          {isEditConfig ? <EditConfig /> : <ViewConfig list={thirdList} />}
+          {isEditConfig ? (
+            <EditConfig toggleConfig={this.toggleConfig.bind(this)} />
+          ) : (
+            <ViewConfig
+              list={thirdList}
+              toggleConfig={this.toggleConfig.bind(this)}
+            />
+          )}
         </div>
       </>
     );
