@@ -1,0 +1,39 @@
+.ksqlDb_details_edit {
+    padding-top: 20px;
+    .data_area {
+        border-right: 1px solid #c4c4c4;
+        padding-right: 40px;
+        .query {
+            height: 338px;
+            border-radius: 6px;
+            border: 1px solid #c4c4c4;
+        }
+        .data_dispaly {
+            margin-top: 40px;
+            .data_list {
+                border-right: 1px solid #c4c4c4;
+                .data_item {
+                    .item_name {
+                        color: $gray_color;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .data_message {
+                height: 270px;
+                border-radius: 6px;
+                border: 1px solid #c4c4c4;
+            }
+        }
+    }
+    .search_stream_table {
+        padding-left: 40px;
+        .search_stream_table_title {
+            margin-top: 30px;
+        }
+        .stream_table_tree {
+            max-height: 560px;
+            overflow: auto;
+        }
+    }
+}

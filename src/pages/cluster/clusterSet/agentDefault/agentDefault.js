@@ -37,20 +37,24 @@ const AgentDefault = props => {
     </ul>
   );
   return (
-    <>
+    <div className="agent_default">
       <div className="action">
-        <div className="switch_box">
-          <SwitchBtn label="隐藏默认的设置" />
-        </div>
-        <div className="broker_id">
-          <CheckBox label="broker.id 1" onChange={onChange} />
-        </div>
-        <div className="download_btn">
-          <Button type="primary">下载</Button>
-        </div>
-        <div className="edit_btn">
-          <Button type="primary">编辑设置</Button>
-        </div>
+        <Row>
+          <Col span={6}>
+            <SwitchBtn label="隐藏默认的设置" />
+          </Col>
+          <Col span={18}>
+            <div className="broker_id">
+              <CheckBox label="broker.id 1" onChange={onChange} />
+            </div>
+            <div className="download_btn">
+              <Button type="primary">下载</Button>
+            </div>
+            <div className="edit_btn">
+              <Button type="primary">编辑设置</Button>
+            </div>
+          </Col>
+        </Row>
       </div>
       <List
         itemLayout="horizontal"
@@ -64,7 +68,7 @@ const AgentDefault = props => {
           </List.Item>
         )}
       />
-    </>
+    </div>
   );
 };
 

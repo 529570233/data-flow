@@ -34,6 +34,12 @@
     .ant-menu-submenu-active {
         background-color: $theme_color;
     }
+    .data_flow_icon {
+        margin-right: 4px;
+        font-size: 22px;
+        line-height: 60px;
+        float: left;
+    }
 }
 
 .cluster_drop_menu {
@@ -41,10 +47,10 @@
     .ant-menu-sub {
         padding-left: 20px;
         padding-right: 20px;
-        padding-top: 15px;
+        padding-top: 10px;
         .ant-menu-item {
             float: left;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             margin-right: 20px;
             background: #ebecff;
             border: 1px solid #bcc0ff;

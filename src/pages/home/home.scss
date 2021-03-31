@@ -55,6 +55,17 @@
                     }
                 }
             }
+            .unhealth_cluster {
+                .ant-card-head {
+                    background-color: #FFB140;
+                    .ant-card-head-wrapper {
+                        .ant-card-extra {
+                            background: #FAC476;
+                            border: 1px solid #FDE9CC;
+                        }
+                    }
+                }
+            }
             .ant-list-item {
                 border: none;
                 padding-left: 10px;

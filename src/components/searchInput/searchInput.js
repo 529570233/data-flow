@@ -4,7 +4,7 @@ import { Input } from "antd";
 
 const { Search } = Input;
 const SearchInput = props => {
-  let { placeholder, width } = props;
+  let { placeholder = "", width = "100%" } = props;
   return (
     <div className="search_input">
       <Search

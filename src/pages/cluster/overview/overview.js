@@ -5,7 +5,7 @@ import { Card } from "antd";
 class Overview extends Component {
   render() {
     return (
-      <>
+      <div className="overview">
         <h2 className="overview_title">概览</h2>
         <div className="overview_content">
           <Card title="代理" bordered={false} style={{ width: "100%" }}>
@@ -16,7 +16,7 @@ class Overview extends Component {
             </ul>
           </Card>
         </div>
-      </>
+      </div>
     );
   }
 }

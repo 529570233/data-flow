@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./head.scss";
-import { Menu, Icon, Affix } from "antd";
+import { Menu, Affix } from "antd";
 const { SubMenu } = Menu;
 
 class Header extends Component {
@@ -50,7 +50,11 @@ class Header extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icon type="setting" />
+              <span className="icon-17 data_flow_icon">
+                <span className="path1"></span>
+                <span className="path2"></span>
+                <span className="path3"></span>
+              </span>
               <span style={{ fontSize: "14px" }}>用户名</span>
             </a>
           </Menu.Item>
@@ -60,7 +64,11 @@ class Header extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icon type="setting" />
+              <span className="icon-13 data_flow_icon">
+                <span className="path1"></span>
+                <span className="path2"></span>
+              </span>
+              <span>消息</span>
             </a>
           </Menu.Item>
         </Menu>

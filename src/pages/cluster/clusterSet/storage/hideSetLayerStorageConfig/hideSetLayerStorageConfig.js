@@ -25,7 +25,7 @@ class HideSetLayerStorageConfig extends Component {
     } = this.props.data;
 
     return (
-      <>
+      <div className="hide_set_layer_storage_config">
         <div className="list">
           <h5>{firstTitle}</h5>
           {firstTip ? <p>{firstTip}</p> : null}
@@ -53,7 +53,7 @@ class HideSetLayerStorageConfig extends Component {
             />
           )}
         </div>
-      </>
+      </div>
     );
   }
 }

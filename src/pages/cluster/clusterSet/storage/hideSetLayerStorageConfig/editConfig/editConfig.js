@@ -11,7 +11,7 @@ class EditConfig extends Component {
       toggleConfig,
     } = this.props;
     return (
-      <Form onSubmit={this.handleSubmit} className="view_config">
+      <Form onSubmit={this.handleSubmit} className="edit_config">
         <Form.Item label="默认情况下启用主题分层">
           {getFieldDecorator("theme_layer")(
             <Select

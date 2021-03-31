@@ -7,7 +7,7 @@ class ViewConfig extends Component {
     let { list, toggleConfig } = this.props;
 
     return (
-      <div className="edit_config">
+      <div className="view_config">
         <Card style={{ width: 500 }}>
           {list.map(item => (
             <p key={item}>{item}</p>

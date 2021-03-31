@@ -1,8 +1,8 @@
-.cluster_set {
-    .cluster_set_title {
+.KsqlDB_details {
+    .ksqlDB_title {
         line-height: 40px;
     }
-    .cluster_set_content {
+    .ksqlDB_content {
         padding-top: 10px;
         @include tabs_style;
     }

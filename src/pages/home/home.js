@@ -4,14 +4,6 @@ import "./home.scss";
 import { Button, Card, Col, Row, List } from "antd";
 import SearchInput from "../../components/searchInput/searchInput";
 
-const data = [
-  "Racing car sprays burning fuel into crowd.",
-  "Japanese princess to wed commoner.",
-  "Australian walks 100km after outback crash.",
-  "Man charged over missing wedding girl.",
-  "Los Angeles battles huge wildfires.",
-];
-
 class Home extends Component {
   state = {
     clusterList: [
@@ -89,11 +81,11 @@ class Home extends Component {
         <div className="cluster_wrap">
           <SearchInput placeholder="搜索集群名称或id" width={260} />
           <div className="cluster_list" style={{ paddingTop: "30px" }}>
-            <Row gutter={70}>
+            <Row gutter={60}>
               {clusterList.map(item => {
                 let { title, isHealth, general, linkServer } = item;
                 return (
-                  <Col span={8}>
+                  <Col span={8} key={title}>
                     <Card
                       title={title}
                       style={{ borderRadius: "20px" }}
@@ -107,8 +99,8 @@ class Home extends Component {
                           dataSource={general}
                           renderItem={item => (
                             <List.Item key={item.id}>
-                              <List.Item.Meta description={general.name} />
-                              <div>{general.value}</div>
+                              <List.Item.Meta description={item.name} />
+                              <div>{item.value}</div>
                             </List.Item>
                           )}
                         ></List>
@@ -120,8 +112,8 @@ class Home extends Component {
                           dataSource={linkServer}
                           renderItem={item => (
                             <List.Item key={item.id}>
-                              <List.Item.Meta description={linkServer.name} />
-                              <div>{linkServer.value}</div>
+                              <List.Item.Meta description={item.name} />
+                              <div>{item.value}</div>
                             </List.Item>
                           )}
                         ></List>

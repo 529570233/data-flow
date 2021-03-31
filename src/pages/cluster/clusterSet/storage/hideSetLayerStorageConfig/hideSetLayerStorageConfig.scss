@@ -1,15 +1,17 @@
-.list {
-    margin-bottom: 25px;
-    .ant-card-bordered {
-        border: none;
-        background-color: #f7f7ff;
-        .ant-card-body {
-            padding: 15px;
-            p {
-                margin-bottom: 6px;
-                color: $gray_color;
-                &:last-of-type {
-                    margin-bottom: 0;
+.hide_set_layer_storage_config {
+    .list {
+        margin-bottom: 25px;
+        .ant-card-bordered {
+            border: none;
+            background-color: #f7f7ff;
+            .ant-card-body {
+                padding: 15px;
+                p {
+                    margin-bottom: 6px;
+                    color: $gray_color;
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
                 }
             }
         }

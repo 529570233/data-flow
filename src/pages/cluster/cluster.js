@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 import "./cluster.scss";
-import { Menu, Icon, Affix } from "antd";
+import { Menu, Affix } from "antd";
 import Overview from "./overview/overview";
 import Agent from "./agent/agent";
 import Theme from "./theme/theme";
@@ -17,13 +17,13 @@ class Cluster extends Component {
 
   state = {
     sidenav: [
-      { title: "概览", link: "/cluster/overview" },
-      { title: "代理", link: "/cluster/agent" },
-      { title: "主题", link: "/cluster/theme" },
-      { title: "连接", link: "/cluster/connection" },
-      { title: "KSQL DB", link: "/cluster/ksqlDb" },
-      { title: "消费者", link: "/cluster/consumer" },
-      { title: "集群设置", link: "/cluster/clusterSet" },
+      { title: "概览", icon: "icon-11", link: "/cluster/overview" },
+      { title: "代理", icon: "icon-1", link: "/cluster/agent" },
+      { title: "主题", icon: "icon-18", link: "/cluster/theme" },
+      { title: "连接", icon: "icon-14", link: "/cluster/connection" },
+      { title: "KSQL DB", icon: "icon-16", link: "/cluster/ksqlDb" },
+      { title: "消费者", icon: "icon-16", link: "/cluster/consumer" },
+      { title: "集群设置", icon: "icon-15", link: "/cluster/clusterSet" },
     ],
   };
 
@@ -42,11 +42,17 @@ class Cluster extends Component {
                 mode="inline"
               >
                 {sidenav.map((item, index) => {
-                  let { title, link } = item;
+                  let { title, icon, link } = item;
                   return (
                     <Menu.Item key={index}>
                       <NavLink to={link} exact>
-                        <Icon type="mail" />
+                        <span className={`${icon} side_nav_icon`}>
+                          <span className="path1"></span>
+                          <span className="path2"></span>
+                          <span className="path3"></span>
+                          <span className="path4"></span>
+                          <span className="path5"></span>
+                        </span>
                         {title}
                       </NavLink>
                     </Menu.Item>
@@ -62,7 +68,7 @@ class Cluster extends Component {
             <Route path="/cluster/overview" exact component={Overview} />
             <Route path="/cluster/theme" exact component={Theme} />
             <Route path="/cluster/agent" exact component={Agent} />
-            <Route path="/cluster/ksqlDb" exact component={KsqlDb} />
+            <Route path="/cluster/ksqlDb" component={KsqlDb} />
             <Route path="/cluster/consumer" exact component={Consumer} />
             <Route path="/cluster/clusterSet" exact component={ClusterSet} />
             <Route path="/cluster/connection" exact component={Connection} />

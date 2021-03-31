@@ -9,14 +9,14 @@ import Storage from "./storage/storage";
 const { TabPane } = Tabs;
 
 class ClusterSet extends Component {
-  callback = key => {
+  callback(key) {
     console.log(key);
-  };
+  }
   render() {
     return (
-      <>
-        <h2 className="clusterSet_title">集群设置</h2>
-        <div className="clusterSet_content">
+      <div className="cluster_set">
+        <h2 className="cluster_set_title">集群设置</h2>
+        <div className="cluster_set_content">
           <Tabs defaultActiveKey="1" onChange={this.callback}>
             <TabPane tab="总则" key="1">
               <General />
@@ -32,7 +32,7 @@ class ClusterSet extends Component {
             </TabPane>
           </Tabs>
         </div>
-      </>
+      </div>
     );
   }
 }

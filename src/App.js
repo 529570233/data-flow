@@ -12,15 +12,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        
-        {/* <header className="header"> */}
-          <Head />
-        {/* </header> */}
+        <Head />
         <Switch>
-          <Route path="/" exact component={Home}/>
+          <Route path="/" exact component={Home} />
           <Route path="/home" exact component={Home} />
           <Route path="/cluster" component={Cluster} />
-          <Redirect to={'/home'}></Redirect>
+          <Redirect to={"/home"}></Redirect>
         </Switch>
       </div>
     </BrowserRouter>

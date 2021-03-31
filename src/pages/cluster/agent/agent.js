@@ -76,7 +76,7 @@ for (let i = 0; i < 100; i++) {
 class Agent extends Component {
   render() {
     return (
-      <>
+      <div className="agent">
         <h2 className="agent_title">代理概览</h2>
         <div className="agent_content">
           <Row gutter={16} style={{ marginBottom: "28px" }}>
@@ -103,8 +103,12 @@ class Agent extends Component {
               <li className="item">content</li>
             </ul>
           </Card>
-          <div className="search_input">
-            <SearchInput placeholder="搜索集群名称或id" width={260} />
+          <div className="search_input_box">
+            <Row>
+              <Col span={6}>
+                <SearchInput placeholder="搜索集群名称或id" />
+              </Col>
+            </Row>
           </div>
           <div className="agent_tatle">
             <Table
@@ -114,7 +118,7 @@ class Agent extends Component {
             />
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

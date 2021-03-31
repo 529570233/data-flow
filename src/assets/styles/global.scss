@@ -16,7 +16,26 @@ $gray_color: #646464; // 灰色值
 }
 
 @mixin btn_style {
+    // 按钮样式
     .ant-btn-primary {
         background-color: $theme_color;
+    }
+}
+
+@mixin tabs_style {
+    // tabs标签页切换
+    .ant-tabs {
+        .ant-tabs-tab {
+            font-weight: 900;
+            &:hover {
+                color: $theme_color;
+            }
+        }
+        .ant-tabs-tab-active {
+            color: $theme_color;
+        }
+        .ant-tabs-ink-bar {
+            background-color: $theme_color;
+        }
     }
 }
