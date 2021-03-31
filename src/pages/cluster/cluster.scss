@@ -5,7 +5,7 @@
         width: $side_nav_width;
         .side_nav {
             padding-top: 30px;
-            height: calc(100vh - 56px);
+            height: calc(100vh - #{$header_height});
             background-color: #0d1040;
             .cluster_name {
                 color: #fff;

@@ -32,7 +32,7 @@ class Cluster extends Component {
     return (
       <div className="cluster">
         <div className="side_nav_wrap">
-          <Affix offsetTop={56}>
+          <Affix offsetTop={60}>
             <div className="side_nav">
               <h2 className="cluster_name">集群1</h2>
               <Menu

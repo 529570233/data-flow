@@ -1,8 +1,7 @@
 .head {
-    $head_height: 60px;
     background-color: #0d1040;
-    height: $head_height;
-    line-height: $head_height;
+    height: $header_height;
+    line-height: $header_height;
     border-bottom: none;
     .ant-menu-submenu {
         top: 0;
@@ -27,7 +26,7 @@
             }
         }
         a {
-            height: $head_height;
+            height: $header_height;
             color: #fff;
         }
     }
@@ -37,7 +36,7 @@
     .data_flow_icon {
         margin-right: 4px;
         font-size: 22px;
-        line-height: 60px;
+        line-height: $header_height;
         float: left;
     }
 }

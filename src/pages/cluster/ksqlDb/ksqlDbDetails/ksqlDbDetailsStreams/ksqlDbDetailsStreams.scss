@@ -1,0 +1,10 @@
+.ksqlDb_details_streams {
+    padding-top: 20px;
+    .actions {
+        margin-bottom: 30px;
+        .add_streams_box {
+            float: right;
+            @include btn_style;
+        }
+    }
+}

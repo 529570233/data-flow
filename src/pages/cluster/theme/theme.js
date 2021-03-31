@@ -36,7 +36,7 @@ class Theme extends Component {
         consume: "0B",
       },
     ],
-  };
+  }
   render() {
     let { tableData } = this.state;
     return (

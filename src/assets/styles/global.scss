@@ -1,5 +1,6 @@
 $theme_color: #333fff; // 主题色
 $gray_color: #646464; // 灰色值
+$header_height: 60px;  // 顶部导航栏的高度
 @mixin form_item($display, $label_width) {
     // 表单控件中label和表单的排列样式
     .ant-form-item-label {
