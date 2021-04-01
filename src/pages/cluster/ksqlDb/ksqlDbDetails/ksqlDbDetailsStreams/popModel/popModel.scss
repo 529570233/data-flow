@@ -1,26 +1,44 @@
 .add_stream_model {
+    .step {
+        color: $gray_color;
+        font-size: 12px;
+    }
+
     .select_theme {
-        .step {
-            color: $gray_color;
-            font-size: 12px;
-        }
         .search_checkbox {
             overflow: auto;
             margin-top: 20px;
+
             .search_box {
                 float: left;
             }
+
             .check_box {
                 float: right;
             }
         }
     }
+
     .themes {
         margin-top: 30px;
         border-top: 2px solid #C4C4C4;
         border-bottom: 2px solid #C4C4C4;
+
         .ant-list-item {
             cursor: pointer;
         }
     }
+
+    .second_step {
+        .second_step_form {
+            @include form_item(block, 100%);
+            padding-right: 20px;
+            border-right: 1px solid #E0E0E0;
+        }
+        .query_existing_stream {
+            padding-left: 20px;
+        }
+    }
+
+
 }
