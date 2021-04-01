@@ -1,0 +1,26 @@
+.add_stream_model {
+    .select_theme {
+        .step {
+            color: $gray_color;
+            font-size: 12px;
+        }
+        .search_checkbox {
+            overflow: auto;
+            margin-top: 20px;
+            .search_box {
+                float: left;
+            }
+            .check_box {
+                float: right;
+            }
+        }
+    }
+    .themes {
+        margin-top: 30px;
+        border-top: 2px solid #C4C4C4;
+        border-bottom: 2px solid #C4C4C4;
+        .ant-list-item {
+            cursor: pointer;
+        }
+    }
+}

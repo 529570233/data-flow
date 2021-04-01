@@ -1,0 +1,23 @@
+.ksqlDb_details_streams_details {
+    .theme {
+        .ant-list-item {
+            border-bottom: none;
+        }
+    }
+    .framework {
+        margin-top: 40px;
+    }
+    .action {
+        margin-top: 40px;
+        .query_stream_box {
+            @include btn_style;
+            margin-right: 15px;
+        }
+        .delete_stream_box {
+            .ant-btn-primary {
+                background-color: #FF4F4D;
+                border-color: #FF4F4D;
+            }
+        }
+    }
+}

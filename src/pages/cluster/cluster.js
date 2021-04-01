@@ -10,6 +10,8 @@ import KsqlDb from "./ksqlDb/ksqlDb";
 import Consumer from "./consumer/consumer";
 import ClusterSet from "./clusterSet/clusterSet";
 
+import KsqlDbDetails from "./ksqlDb/ksqlDbDetails/ksqlDbDetails";
+
 class Cluster extends Component {
   handleClick = e => {
     console.log("click ", e);
@@ -68,7 +70,8 @@ class Cluster extends Component {
             <Route path="/cluster/overview" exact component={Overview} />
             <Route path="/cluster/theme" exact component={Theme} />
             <Route path="/cluster/agent" exact component={Agent} />
-            <Route path="/cluster/ksqlDb" component={KsqlDb} />
+            <Route path="/cluster/ksqlDb" exact component={KsqlDb} />
+            <Route path="/cluster/ksqlDb/*" component={KsqlDbDetails} />
             <Route path="/cluster/consumer" exact component={Consumer} />
             <Route path="/cluster/clusterSet" exact component={ClusterSet} />
             <Route path="/cluster/connection" exact component={Connection} />

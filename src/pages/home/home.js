@@ -79,9 +79,14 @@ class Home extends Component {
           </ul>
         </div>
         <div className="cluster_wrap">
-          <SearchInput placeholder="搜索集群名称或id" width={260} />
+          <Row>
+            <Col span={5}>
+              <SearchInput placeholder="搜索集群名称或id" />
+            </Col>
+          </Row>
+
           <div className="cluster_list" style={{ paddingTop: "30px" }}>
-            <Row gutter={60}>
+            <Row gutter={[40, 40]}>
               {clusterList.map(item => {
                 let { title, isHealth, general, linkServer } = item;
                 return (
@@ -90,7 +95,9 @@ class Home extends Component {
                       title={title}
                       style={{ borderRadius: "20px" }}
                       extra={<span>{isHealth ? "健康" : "问题"}</span>}
-                      className={isHealth ? "health_cluster" : "unhealth_cluster"}
+                      className={
+                        isHealth ? "health_cluster" : "unhealth_cluster"
+                      }
                     >
                       <div>
                         <h3>概览</h3>
