@@ -3,32 +3,26 @@
         color: $gray_color;
         font-size: 12px;
     }
-
     .select_theme {
         .search_checkbox {
             overflow: auto;
             margin-top: 20px;
-
             .search_box {
                 float: left;
             }
-
             .check_box {
                 float: right;
             }
         }
     }
-
     .themes {
         margin-top: 30px;
         border-top: 2px solid #C4C4C4;
         border-bottom: 2px solid #C4C4C4;
-
         .ant-list-item {
             cursor: pointer;
         }
     }
-
     .second_step {
         .second_step_form {
             @include form_item(block, 100%);
@@ -37,8 +31,21 @@
         }
         .query_existing_stream {
             padding-left: 20px;
+            .query_existing_stream_title {
+                border-bottom: 2px solid #C4C4C4;
+                line-height: 34px;
+            }
+            .existing_stream {
+                margin-top: 15px;
+                .existing_stream_item {
+                    font-size: 12px;
+                    color: $gray_color;
+                    margin-bottom: 6px;
+                }
+            }
+        }
+        .ant-form-item {
+            margin-bottom: 0;
         }
     }
-
-
 }

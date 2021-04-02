@@ -1,11 +1,12 @@
 $theme_color: #333fff; // 主题色
 $gray_color: #646464; // 灰色值
+$danger_color: #FF4F4D;
 $header_height: 60px; // 顶部导航栏的高度
 @mixin form_item($display, $label_width) {
     // 表单控件中label和表单的排列样式
     .ant-form-item-label {
         display: $display;
-        width: $label_width;
+        min-width: $label_width;
         text-align: left;
         label {
             color: $gray_color;
@@ -17,10 +18,18 @@ $header_height: 60px; // 顶部导航栏的高度
 }
 
 @mixin btn_style {
-    // 按钮样式
+    // primary按钮样式
     .ant-btn-primary {
         background-color: $theme_color;
         border-color: $theme_color;
+    }
+}
+
+@mixin danger_btn_style {
+    // 红色按钮样式
+    .ant-btn-primary {
+        background-color: $danger_color;
+        border-color: $danger_color;
     }
 }
 

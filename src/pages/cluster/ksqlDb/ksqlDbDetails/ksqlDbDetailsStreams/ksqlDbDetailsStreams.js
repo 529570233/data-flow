@@ -42,7 +42,6 @@ class KsqlDbDetailsStreams extends Component {
 		this.setState(() => ({
 			visible: isShow,
 		}));
-		// this.popModelComp.forceUpdate();
 	}
 
 	render() {

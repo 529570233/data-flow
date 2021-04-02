@@ -14,10 +14,14 @@
             margin-right: 15px;
         }
         .delete_stream_box {
-            .ant-btn-primary {
-                background-color: #FF4F4D;
-                border-color: #FF4F4D;
-            }
+            @include danger_btn_style;
         }
+    }
+}
+
+.delete_stream_model {
+    .delete_stream {
+        margin-top: 15px;
+        @include form_item(inline-block, 80px);
     }
 }

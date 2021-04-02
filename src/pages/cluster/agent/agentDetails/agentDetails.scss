@@ -1,18 +1,25 @@
-.agent {
+.agent_details {
     .agent_title {
         line-height: 40px;
     }
-    .agent_content {
-        padding-top: 20px;
+    .agent_details_cards {
+        padding-top: 10px;
+        .delete_agent {
+            overflow: auto;
+            margin-bottom: 20px;
+            @include danger_btn_style;
+            .ant-btn-primary {
+                float: right;
+            }
+        }
         .ant-card {
             box-shadow: 3px 3px 12px 0px #dddcdc;
             border-radius: 10px;
-            cursor: pointer;
             .ant-card-head {
                 border: none;
                 position: relative;
                 &::before {
-                    content: '';
+                    content: "";
                     position: absolute;
                     top: 50%;
                     left: 0;
@@ -30,12 +37,6 @@
                     float: left;
                 }
             }
-        }
-        .search_input_box {
-            margin-top: 70px;
-        }
-        .agent_tatle {
-            margin-top: 20px;
         }
     }
 }

@@ -9,8 +9,9 @@ import Connection from "./connection/connection";
 import KsqlDb from "./ksqlDb/ksqlDb";
 import Consumer from "./consumer/consumer";
 import ClusterSet from "./clusterSet/clusterSet";
-
 import KsqlDbDetails from "./ksqlDb/ksqlDbDetails/ksqlDbDetails";
+import AgentDetails from "./agent/agentDetails/agentDetails";
+import AgentIndicator from "./agent/agentIndicator/agentIndicator";
 
 class Cluster extends Component {
   handleClick = e => {
@@ -70,6 +71,8 @@ class Cluster extends Component {
             <Route path="/cluster/overview" exact component={Overview} />
             <Route path="/cluster/theme" exact component={Theme} />
             <Route path="/cluster/agent" exact component={Agent} />
+            <Route path="/cluster/agent/details/*" exact component={AgentDetails} />
+            <Route path="/cluster/agent/indicator/*" exact component={AgentIndicator} />
             <Route path="/cluster/ksqlDb" exact component={KsqlDb} />
             <Route path="/cluster/ksqlDb/*" component={KsqlDbDetails} />
             <Route path="/cluster/consumer" exact component={Consumer} />

@@ -6,6 +6,8 @@ import { Tabs, Breadcrumb } from "antd";
 import KsqlDbDetailsEdit from "./ksqlDbDetailsEdit/ksqlDbDetailsEdit";
 import KsqlDbDetailsStreams from "./ksqlDbDetailsStreams/ksqlDbDetailsStreams";
 import KsqlDbDetailsStreamsDetails from "./ksqlDbDetailsStreams/ksqlDbDetailsStreamsDetails/ksqlDbDetailsStreamsDetails";
+import KsqlDbDetailsTable from "./ksqlDbDetailsTable/ksqlDbDetailsTable";
+import KsqlDbDetailsFlow from "./ksqlDbDetailsFlow/ksqlDbDetailsFlow";
 
 const { TabPane } = Tabs;
 class KsqlDbDetails extends Component {
@@ -33,7 +35,7 @@ class KsqlDbDetails extends Component {
               <KsqlDbDetailsEdit />
             </TabPane>
             <TabPane tab="flow" key="2">
-              222
+              <KsqlDbDetailsFlow />
             </TabPane>
             <TabPane tab="streams" key="3">
               <Switch>
@@ -49,7 +51,7 @@ class KsqlDbDetails extends Component {
               </Switch>
             </TabPane>
             <TabPane tab="表格" key="4">
-              444
+              <KsqlDbDetailsTable />
             </TabPane>
             <TabPane tab="运行中查询" key="5">
               555

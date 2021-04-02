@@ -1,87 +1,55 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./agent.scss";
 import { Card, Col, Row, Table } from "antd";
 import SearchInput from "../../../components/searchInput/searchInput";
 
-const columns = [
-  {
-    title: "Full Name",
-    width: 100,
-    dataIndex: "name",
-    key: "name",
-    fixed: "left",
-  },
-  {
-    title: "Age",
-    width: 100,
-    dataIndex: "age",
-    key: "age",
-    fixed: "left",
-  },
-  {
-    title: "Column 1",
-    dataIndex: "address",
-    key: "1",
-    width: 150,
-  },
-  {
-    title: "Column 2",
-    dataIndex: "address",
-    key: "2",
-    width: 150,
-  },
-  {
-    title: "Column 3",
-    dataIndex: "address",
-    key: "3",
-    width: 150,
-  },
-  {
-    title: "Column 4",
-    dataIndex: "address",
-    key: "4",
-    width: 150,
-  },
-  {
-    title: "Column 5",
-    dataIndex: "address",
-    key: "5",
-    width: 150,
-  },
-  {
-    title: "Column 6",
-    dataIndex: "address",
-    key: "6",
-    width: 150,
-  },
-  {
-    title: "Column 7",
-    dataIndex: "address",
-    key: "7",
-    width: 150,
-  },
-  { title: "Column 8", dataIndex: "address", key: "8" },
-];
-
-const data = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i,
-    name: `Edrward ${i}`,
-    age: 32,
-    address: `London Park no. ${i}`,
-  });
-}
-
+const { Column, ColumnGroup } = Table;
 class Agent extends Component {
+  state = {
+    tableData: [
+      {
+        key: "1",
+        name: "agent1",
+        copy_area: "0 of 1",
+        async_follower: "0 of 1",
+        async_observer: "0 of 1",
+      },
+      {
+        key: "2",
+        name: "agent2",
+        copy_area: "0 of 1",
+        async_follower: "0 of 1",
+        async_observer: "0 of 1",
+      },
+      {
+        key: "3",
+        name: "agent3",
+        copy_area: "0 of 5",
+        async_follower: "0 of 5",
+        async_observer: "0 of 0",
+      },
+    ],
+  };
+  goIndicatorPage(name) {
+    console.log(this.props.history);
+    this.props.history.push(
+      `/cluster/agent/indicator/indicator1?indicator_name=${name}`
+    );
+  }
   render() {
+    let { tableData } = this.state;
     return (
       <div className="agent">
         <h2 className="agent_title">代理概览</h2>
         <div className="agent_content">
           <Row gutter={16} style={{ marginBottom: "28px" }}>
             <Col span={12}>
-              <Card title="生产" bordered={false}>
+              <Card
+                title="生产"
+                bordered={false}
+                onClick={() => this.goIndicatorPage("indicator1")}
+              >
                 Card content
               </Card>
             </Col>
@@ -91,7 +59,6 @@ class Agent extends Component {
               </Card>
             </Col>
           </Row>
-
           <Card
             title="分区与复制"
             bordered={false}
@@ -103,6 +70,18 @@ class Agent extends Component {
               <li className="item">content</li>
             </ul>
           </Card>
+          <Row gutter={16} style={{ marginBottom: "28px" }}>
+            <Col span={12}>
+              <Card title="自我平衡" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card title="分层存储" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+          </Row>
           <div className="search_input_box">
             <Row>
               <Col span={6}>
@@ -112,10 +91,27 @@ class Agent extends Component {
           </div>
           <div className="agent_tatle">
             <Table
-              columns={columns}
-              dataSource={data}
-              scroll={{ x: 1500, y: 300 }}
-            />
+              dataSource={tableData}
+              bordered
+              style={{ marginTop: "30px" }}
+            >
+              <Column
+                title="ksqlDB应用程序名称"
+                dataIndex="name"
+                render={(text, record) => (
+                  <Link
+                    to={`/cluster/agent/details/${text}?agent_name=${text}`}
+                  >
+                    {text}
+                  </Link>
+                )}
+              />
+              <ColumnGroup title="有效性">
+                <Column title="复制分区" dataIndex="copy_area" />
+                <Column title="非同步跟随者" dataIndex="async_follower" />
+                <Column title="非同步观察者" dataIndex="async_observer" />
+              </ColumnGroup>
+            </Table>
           </div>
         </div>
       </div>

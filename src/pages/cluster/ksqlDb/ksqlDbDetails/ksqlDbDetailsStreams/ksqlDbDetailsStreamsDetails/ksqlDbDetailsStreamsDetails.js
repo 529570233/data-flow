@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ksqlDbDetailsStreamsDetails.scss";
-import { List, Row, Col, Table, Button } from "antd";
+import { List, Row, Col, Table, Button, Modal, Form,Input } from "antd";
 
 const columns = [
   {
@@ -14,7 +14,6 @@ const columns = [
     key: "age",
   },
 ];
-
 class KsqlDbDetailsStreamsDetails extends Component {
   state = {
     themeData: [
@@ -40,9 +39,48 @@ class KsqlDbDetailsStreamsDetails extends Component {
         age: 32,
       },
     ],
+    visible: false,
+    confirmLoading: false,
   };
+
+  showModal() {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleOk = () => {
+    this.setState({
+      confirmLoading: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        visible: false,
+        confirmLoading: false,
+      });
+    }, 2000);
+  };
+
+  handleCancel = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log("Received values of form: ", values);
+      }
+    });
+  };
+
   render() {
-    let { themeData, tableData } = this.state;
+    let { themeData, tableData, visible, confirmLoading } = this.state;
+    let {
+      form: { getFieldDecorator },
+    } = this.props;
+
     return (
       <div className="ksqlDb_details_streams_details">
         <Row>
@@ -74,7 +112,45 @@ class KsqlDbDetailsStreamsDetails extends Component {
                 <Button type="primary">查询Stream</Button>
               </span>
               <span className="delete_stream_box">
-                <Button type="primary">删除Stream</Button>
+                <Button type="primary" onClick={() => this.showModal()}>
+                  删除Stream
+                </Button>
+                <Modal
+                  title="删除stream"
+                  visible={visible}
+                  confirmLoading={confirmLoading}
+                  onCancel={this.handleCancel}
+                  footer={
+                    <>
+                      <Button
+                        type="default"
+                        onClick={() => this.handleCancel()}
+                      >
+                        取消
+                      </Button>
+                      <Button type="primary" onClick={() => this.handleOk()}>
+                        确定
+                      </Button>
+                    </>
+                  }
+                >
+                  <div className="delete_stream_model">
+                    <h5>确定要永久删除stream KSQL_PROCESSING_LOG？</h5>
+                    <Form
+                      onSubmit={this.handleSubmit}
+                      className="delete_stream"
+                    >
+                      <Form.Item label="stream名称">
+                        {getFieldDecorator("ksqlDB_cluster")(
+                          <Input
+                            placeholder=""
+                            style={{ width: "200px" }}
+                          />
+                        )}
+                      </Form.Item>
+                    </Form>
+                  </div>
+                </Modal>
               </span>
             </div>
           </Col>
@@ -84,4 +160,4 @@ class KsqlDbDetailsStreamsDetails extends Component {
   }
 }
 
-export default KsqlDbDetailsStreamsDetails;
+export default Form.create({ name: "deleteStream" })(KsqlDbDetailsStreamsDetails);
