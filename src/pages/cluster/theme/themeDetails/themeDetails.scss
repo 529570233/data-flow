@@ -1,0 +1,9 @@
+.themeDetails {
+    .theme_title {
+        line-height: 40px;
+    }
+    .theme_content {
+        padding-top: 10px;
+        @include tabs_style;
+    }
+}

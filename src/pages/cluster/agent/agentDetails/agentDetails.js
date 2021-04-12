@@ -30,7 +30,7 @@ class AgentDetails extends Component {
             bordered={false}
             style={{ width: "100%", marginBottom: "28px" }}
           >
-            <ul className="list">
+            <ul className="card_data_list">
               <li className="item">content</li>
               <li className="item">content</li>
               <li className="item">content</li>
@@ -41,7 +41,7 @@ class AgentDetails extends Component {
             bordered={false}
             style={{ width: "100%", marginBottom: "28px" }}
           >
-            <ul className="list">
+            <ul className="card_data_list">
               <li className="item">content</li>
               <li className="item">content</li>
               <li className="item">content</li>

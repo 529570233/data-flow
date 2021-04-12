@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./theme.scss";
+import { Link } from "react-router-dom";
 import { Button, Table, Row, Col } from "antd";
 import SearchInput from "../../../components/searchInput/searchInput";
 import SwitchBtn from "../../../components/switchBtn/switchBtn";
@@ -36,7 +37,7 @@ class Theme extends Component {
         consume: "0B",
       },
     ],
-  }
+  };
   render() {
     let { tableData } = this.state;
     return (
@@ -67,27 +68,23 @@ class Theme extends Component {
             </Row>
           </div>
           <Table dataSource={tableData} bordered>
-            <Column title="主题名称" dataIndex="name" key="name" />
+            <Column
+              title="主题名称"
+              dataIndex="name"
+              render={(text, record) => (
+                <Link to={`/cluster/theme/${text}?theme_name=${text}`}>
+                  {text}
+                </Link>
+              )}
+            />
             <ColumnGroup title="有效性">
-              <Column title="复制分区" dataIndex="copy_area" key="copy_area" />
-              <Column
-                title="非同步跟随者"
-                dataIndex="async_follower"
-                key="async_follower"
-              />
-              <Column
-                title="非同步观察者"
-                dataIndex="async_observer"
-                key="async_observer"
-              />
+              <Column title="复制分区" dataIndex="copy_area" />
+              <Column title="非同步跟随者" dataIndex="async_follower" />
+              <Column title="非同步观察者" dataIndex="async_observer" />
             </ColumnGroup>
             <ColumnGroup title="吞吐量">
-              <Column
-                title="字节/秒 生产"
-                dataIndex="production"
-                key="production"
-              />
-              <Column title="字节/秒 消费" dataIndex="consume" key="consume" />
+              <Column title="字节/秒 生产" dataIndex="production" />
+              <Column title="字节/秒 消费" dataIndex="consume" />
             </ColumnGroup>
           </Table>
         </div>

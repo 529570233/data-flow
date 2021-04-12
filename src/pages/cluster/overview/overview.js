@@ -9,7 +9,7 @@ class Overview extends Component {
         <h2 className="overview_title">概览</h2>
         <div className="overview_content">
           <Card title="代理" bordered={false} style={{ width: "100%" }}>
-            <ul className="list">
+            <ul className="card_data_list">
               <li className="item">content</li>
               <li className="item">content</li>
               <li className="item">content</li>
