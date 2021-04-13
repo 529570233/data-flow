@@ -1,7 +1,5 @@
-.agent {
-    .agent_title {
-        line-height: 40px;
-    }
+.theme_overview {
+    padding-top: 20px;
     @include left_ant_card;
     .card_data_list {
         display: flex;
@@ -13,7 +11,7 @@
     .search_input_box {
         margin-top: 70px;
     }
-    .agent_tatle {
+    .part_tatle {
         margin-top: 20px;
     }
 }

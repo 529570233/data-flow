@@ -1,13 +1,13 @@
-.agent_details {
-    .agent_title {
+.connection_details {
+    .connection_title {
         line-height: 40px;
     }
-    .agent_details_cards {
+    .connection_details_cards {
         padding-top: 10px;
-        .delete_agent {
+        .add_connection {
             overflow: auto;
             margin-bottom: 20px;
-            @include danger_btn_style;
+            @include btn_style;
             .ant-btn-primary {
                 float: right;
             }

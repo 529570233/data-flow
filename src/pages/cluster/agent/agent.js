@@ -32,7 +32,6 @@ class Agent extends Component {
     ],
   };
   goIndicatorPage(name) {
-    console.log(this.props.history);
     this.props.history.push(
       `/cluster/agent/indicator/indicator1?indicator_name=${name}`
     );

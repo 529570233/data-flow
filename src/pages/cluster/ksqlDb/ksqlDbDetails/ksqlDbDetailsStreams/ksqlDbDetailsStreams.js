@@ -4,7 +4,7 @@ import './ksqlDbDetailsStreams.scss';
 import qs from 'qs';
 import { Button, Table, Row, Col } from 'antd';
 import SearchInput from '../../../../../components/searchInput/searchInput';
-import PopModel from './popModel/popModel';
+import AddStreamModel from './addStreamModel/addStreamModel';
 
 const { Column, ColumnGroup } = Table;
 class KsqlDbDetailsStreams extends Component {
@@ -68,7 +68,7 @@ class KsqlDbDetailsStreams extends Component {
 								>
 									添加Stream
 								</Button>
-								<PopModel
+								<AddStreamModel
 									isVisible={visible}
 									showModal={this.showModal.bind(this)}
 								/>

@@ -13,6 +13,9 @@ import KsqlDbDetails from "./ksqlDb/ksqlDbDetails/ksqlDbDetails";
 import AgentDetails from "./agent/agentDetails/agentDetails";
 import AgentIndicator from "./agent/agentIndicator/agentIndicator";
 import ThemeDetails from "./theme/themeDetails/themeDetails";
+import ConnectionDetails from "./connection/connectionDetails/connectionDetails";
+import ChooseConnectionCategory from "./connection/connectionDetails/chooseConnectionCategory/chooseConnectionCategory";
+import AddConnection from "./connection/connectionDetails/chooseConnectionCategory/addConnection/addConnection";
 
 class Cluster extends Component {
   handleClick = e => {
@@ -71,15 +74,18 @@ class Cluster extends Component {
             <Route path="/cluster" exact component={Overview} />
             <Route path="/cluster/overview" exact component={Overview} />
             <Route path="/cluster/theme" exact component={Theme} />
-            <Route path="/cluster/theme/*" component={ThemeDetails} />
+            <Route path="/cluster/theme/*" exact component={ThemeDetails} />
             <Route path="/cluster/agent" exact component={Agent} />
             <Route path="/cluster/agent/details/*" exact component={AgentDetails} />
             <Route path="/cluster/agent/indicator/*" exact component={AgentIndicator} />
             <Route path="/cluster/ksqlDb" exact component={KsqlDb} />
-            <Route path="/cluster/ksqlDb/*" component={KsqlDbDetails} />
+            <Route path="/cluster/ksqlDb/*" exact component={KsqlDbDetails} />
             <Route path="/cluster/consumer" exact component={Consumer} />
             <Route path="/cluster/clusterSet" exact component={ClusterSet} />
             <Route path="/cluster/connection" exact component={Connection} />
+            <Route path="/cluster/connection/*/choose" exact component={ChooseConnectionCategory} />
+            <Route path="/cluster/connection/*/choose/add" exact component={AddConnection} />
+            <Route path="/cluster/connection/*" exact component={ConnectionDetails} />
           </Switch>
         </div>
       </div>

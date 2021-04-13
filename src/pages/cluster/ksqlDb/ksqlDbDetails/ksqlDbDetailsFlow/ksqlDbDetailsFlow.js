@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ksqlDbDetailsFlow.scss";
-import { Card, Row, Col, Drawer, List, Tabs, Tree } from "antd";
+import { Card, Row, Col, Drawer, Tabs, Tree } from "antd";
 import SearchInput from "../../../../../components/searchInput/searchInput";
 
 const { TabPane } = Tabs;
@@ -13,10 +13,10 @@ class KsqlDbDetailsFlow extends Component {
       { id: 3, title: "title3", tip: "card content3" },
     ],
     flowDrawerData: [
-      { name: "key", value: "value" },
-      { name: "key", value: "value" },
-      { name: "key", value: "value" },
-      { name: "key", value: "value" },
+      { name: "key1", value: "value1" },
+      { name: "key2", value: "value2" },
+      { name: "key3", value: "value3" },
+      { name: "key4", value: "value4" },
     ],
     treeData: [
       {
@@ -138,16 +138,15 @@ class KsqlDbDetailsFlow extends Component {
             <div className="ksqlDb_details_flow_drawer">
               <h2>{selectedItemTitle}</h2>
               <div className="flow_drawer_data">
-                <List
-                  size="small"
-                  dataSource={flowDrawerData}
-                  renderItem={item => (
-                    <List.Item key={item.id}>
-                      <List.Item.Meta description={item.name} />
-                      <div>{item.value}</div>
-                    </List.Item>
-                  )}
-                ></List>
+                {flowDrawerData.map(item => {
+                  let { name, value } = item;
+                  return (
+                    <Row gutter={[20, 15]} key={name}>
+                      <Col span={5}>{name}</Col>
+                      <Col span={19}>{value}</Col>
+                    </Row>
+                  );
+                })}
               </div>
               <div className="flow_drawer_tabs">
                 <Tabs defaultActiveKey="1" onChange={this.callback}>

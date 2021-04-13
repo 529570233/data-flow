@@ -7,38 +7,11 @@
         .ant-row {
             width: calc(100% + 30px);
         }
-        .ant-card {
-            box-shadow: 3px 3px 12px 0px #dddcdc;
-            border-radius: 10px;
-            text-align: center;
-            padding: 25px 0;
-            cursor: pointer;
-            border: 1px solid rgba(0, 0, 0, 0);
-            transition: border-color 0.3s;
-            &:hover {
-                border: 1px solid $theme_color;
-            }
-            .ant-card-head {
-                border: none;
-                min-height: 0;
-                .ant-card-head-title {
-                    padding: 0;
-                }
-            }
-            .ant-card-body {
-                padding: 0;
-            }
-        }
+        @include top_ant_card;
     }
 }
 
 .ksqlDb_details_flow_drawer {
-    .flow_drawer_data {
-        width: 40%;
-        .ant-list-item {
-            border-bottom: none;
-        }
-    }
     .flow_drawer_tabs {
         margin-top: 30px;
         @include tabs_style;

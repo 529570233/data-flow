@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./popModel.scss";
+import "./addStreamModel.scss";
 import { Button, Modal, List, Icon, Form, Input, Select, Row, Col } from "antd";
 import SearchInput from "../../../../../../components/searchInput/searchInput";
 import CheckBox from "../../../../../../components/checkBox/checkBox";
 
 const { Option } = Select;
-class PopModel extends Component {
+class AddStreamModel extends Component {
   state = {
     confirmLoading: false,
     selectedItemId: null,
@@ -283,4 +283,4 @@ class PopModel extends Component {
   }
 }
 
-export default Form.create({ name: "addStream" })(PopModel);
+export default Form.create({ name: "addStream" })(AddStreamModel);

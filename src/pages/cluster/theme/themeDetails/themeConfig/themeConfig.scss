@@ -1,0 +1,12 @@
+.theme_config {
+    .config_list {
+        color: $gray_color;
+    }
+    .action {
+        margin-top: 30px;
+        @include btn_style;
+        .edit_config_box {
+            margin-right: 20px;
+        }
+    }
+}

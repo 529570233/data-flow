@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ksqlDbDetailsStreamsDetails.scss";
-import { List, Row, Col, Table, Button, Modal, Form,Input } from "antd";
+import { Row, Col, Table, Button, Modal, Form, Input } from "antd";
 
 const columns = [
   {
@@ -17,10 +17,10 @@ const columns = [
 class KsqlDbDetailsStreamsDetails extends Component {
   state = {
     themeData: [
-      { name: "key", value: "value" },
-      { name: "key", value: "value" },
-      { name: "key", value: "value" },
-      { name: "key", value: "value" },
+      { name: "key1", value: "value1" },
+      { name: "key2", value: "value2" },
+      { name: "key3", value: "value3" },
+      { name: "key4", value: "value4" },
     ],
     tableData: [
       {
@@ -83,81 +83,75 @@ class KsqlDbDetailsStreamsDetails extends Component {
 
     return (
       <div className="ksqlDb_details_streams_details">
-        <Row>
-          <Col span={10}>
-            <div className="theme">
-              <h3>主题</h3>
-              <List
-                size="small"
-                dataSource={themeData}
-                renderItem={item => (
-                  <List.Item key={item.id}>
-                    <List.Item.Meta description={item.name} />
-                    <div>{item.value}</div>
-                  </List.Item>
-                )}
-              ></List>
-            </div>
-            <div className="framework">
-              <h3>架构</h3>
+        <div className="theme">
+          <h3>主题</h3>
+          <div className="theme_data">
+            {themeData.map(item => {
+              let { name, value } = item;
+              return (
+                <Row gutter={[20, 15]} key={name}>
+                  <Col span={8}>{name}</Col>
+                  <Col span={16}>{value}</Col>
+                </Row>
+              );
+            })}
+          </div>
+        </div>
+        <div className="framework">
+          <h3>架构</h3>
+          <Row>
+            <Col span={12}>
               <Table
                 columns={columns}
                 dataSource={tableData}
                 pagination={false}
                 size="middle"
               />
-            </div>
-            <div className="action">
-              <span className="query_stream_box">
-                <Button type="primary">查询Stream</Button>
-              </span>
-              <span className="delete_stream_box">
-                <Button type="primary" onClick={() => this.showModal()}>
-                  删除Stream
-                </Button>
-                <Modal
-                  title="删除stream"
-                  visible={visible}
-                  confirmLoading={confirmLoading}
-                  onCancel={this.handleCancel}
-                  footer={
-                    <>
-                      <Button
-                        type="default"
-                        onClick={() => this.handleCancel()}
-                      >
-                        取消
-                      </Button>
-                      <Button type="primary" onClick={() => this.handleOk()}>
-                        确定
-                      </Button>
-                    </>
-                  }
-                >
-                  <div className="delete_stream_model">
-                    <h5>确定要永久删除stream KSQL_PROCESSING_LOG？</h5>
-                    <Form
-                      onSubmit={this.handleSubmit}
-                      className="delete_stream"
-                    >
-                      <Form.Item label="stream名称">
-                        {getFieldDecorator("ksqlDB_cluster")(
-                          <Input
-                            placeholder=""
-                            style={{ width: "200px" }}
-                          />
-                        )}
-                      </Form.Item>
-                    </Form>
-                  </div>
-                </Modal>
-              </span>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </div>
+        <div className="action">
+          <span className="query_stream_box">
+            <Button type="primary">查询Stream</Button>
+          </span>
+          <span className="delete_stream_box">
+            <Button type="primary" onClick={() => this.showModal()}>
+              删除Stream
+            </Button>
+            <Modal
+              title="删除stream"
+              visible={visible}
+              confirmLoading={confirmLoading}
+              onCancel={this.handleCancel}
+              footer={
+                <>
+                  <Button type="default" onClick={() => this.handleCancel()}>
+                    取消
+                  </Button>
+                  <Button type="primary" onClick={() => this.handleOk()}>
+                    确定
+                  </Button>
+                </>
+              }
+            >
+              <div className="delete_stream_model">
+                <h5>确定要永久删除stream KSQL_PROCESSING_LOG？</h5>
+                <Form onSubmit={this.handleSubmit} className="delete_stream">
+                  <Form.Item label="stream名称">
+                    {getFieldDecorator("ksqlDB_cluster")(
+                      <Input placeholder="" style={{ width: "200px" }} />
+                    )}
+                  </Form.Item>
+                </Form>
+              </div>
+            </Modal>
+          </span>
+        </div>
       </div>
     );
   }
 }
 
-export default Form.create({ name: "deleteStream" })(KsqlDbDetailsStreamsDetails);
+export default Form.create({ name: "deleteStream" })(
+  KsqlDbDetailsStreamsDetails
+);

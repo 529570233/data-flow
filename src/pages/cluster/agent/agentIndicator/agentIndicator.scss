@@ -7,7 +7,7 @@
     }
     .chart_data {
         margin-top: 30px;
-        @include ant_card;
+        @include left_ant_card;
         .chart_box {
             .chart_item {
                 margin-bottom: 30px;

@@ -4,7 +4,7 @@
     }
     .overview_content {
         padding-top: 20px;
-        @include ant_card;
+        @include left_ant_card;
         .card_data_list {
             display: flex;
             justify-content: space-between;

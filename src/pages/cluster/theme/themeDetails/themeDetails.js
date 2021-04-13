@@ -3,6 +3,8 @@ import "./themeDetails.scss";
 import { Link } from "react-router-dom";
 import { Tabs, Breadcrumb } from "antd";
 import qs from "qs";
+import ThemeOverview from "./themeOverview/themeOverview";
+import ThemeConfig from "./themeConfig/themeConfig";
 
 const { TabPane } = Tabs;
 class ThemeDetails extends Component {
@@ -15,7 +17,7 @@ class ThemeDetails extends Component {
       } = this.props,
       themeName = qs.parse(search.substring(1)).theme_name;
     return (
-      <div className="themeDetails">
+      <div className="theme_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
             <Link to="/cluster/theme">所有主题</Link>
@@ -26,7 +28,7 @@ class ThemeDetails extends Component {
         <div className="theme_content">
           <Tabs defaultActiveKey="1" onChange={this.callback}>
             <TabPane tab="概览" key="1">
-              111
+              <ThemeOverview />
             </TabPane>
             <TabPane tab="消息" key="2">
               222
@@ -35,7 +37,7 @@ class ThemeDetails extends Component {
               333
             </TabPane>
             <TabPane tab="配置" key="4">
-              444
+              <ThemeConfig />
             </TabPane>
           </Tabs>
         </div>

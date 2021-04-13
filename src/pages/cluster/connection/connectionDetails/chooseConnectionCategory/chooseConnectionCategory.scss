@@ -1,0 +1,16 @@
+.choose_connection {
+    .page_title {
+        line-height: 40px;
+    }
+    .actions {
+        margin-top: 30px;
+        .upload_file {
+            float: right;
+            @include btn_style;
+        }
+    }
+    .connection_category {
+        margin-top: 30px;
+        @include top_ant_card;
+    }
+}

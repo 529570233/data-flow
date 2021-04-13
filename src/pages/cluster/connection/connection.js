@@ -1,26 +1,10 @@
 import React, { Component } from "react";
 import "./connection.scss";
-
+import { Link } from "react-router-dom";
 import { Table, Row, Col } from "antd";
 import SearchInput from "../../../components/searchInput/searchInput";
 
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-];
+const { Column } = Table;
 class Connection extends Component {
   state = {
     tableData: [
@@ -55,12 +39,25 @@ class Connection extends Component {
               <SearchInput placeholder="搜索" />
             </Col>
           </Row>
-          <Table
-            bordered
-            columns={columns}
-            dataSource={tableData}
-            style={{ marginTop: "30px" }}
-          />
+          <Table dataSource={tableData} bordered style={{ marginTop: "30px" }}>
+            <Column
+              title="集群名称"
+              dataIndex="name"
+              render={(text, record) => (
+                <Link to={`/cluster/connection/${text}?connection_name=${text}`}>
+                  {text}
+                </Link>
+              )}
+            />
+            <Column
+              title="连接器总数"
+              dataIndex="age"
+            />
+            <Column
+              title="运行的连接器"
+              dataIndex="address"
+            />
+          </Table>
         </div>
       </div>
     );

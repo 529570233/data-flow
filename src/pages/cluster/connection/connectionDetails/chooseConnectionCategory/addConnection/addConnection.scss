@@ -1,0 +1,48 @@
+.add_connection {
+    .page_title {
+        line-height: 40px;
+    }
+    .connection_content {
+        padding-top: 30px;
+        .step_form {
+            // .ant-steps-item-finish {
+            //     .ant-steps-item-icon {
+            //     }
+            //     .ant-steps-item-title {
+            //         &::after {
+            //             background-color: $theme_color;
+            //         }
+            //     }
+            // }
+            // .ant-steps-item-active {
+            //     .ant-steps-item-icon {
+            //         background-color: $theme_color;
+            //     }
+            // }
+            // @include btn_style;
+        }
+        .step_process {
+            // .ant-steps-item-finish {
+            //     .ant-steps-item-tail {
+            //         &::after {
+            //             background-color: $theme_color;
+            //         }
+            //     }
+            //     .ant-steps-icon-dot {
+            //         background-color: $theme_color;
+            //     }
+            // }
+            // .ant-steps-item-active {
+            //     .ant-steps-icon-dot {
+            //         background-color: $theme_color;
+            //     }
+            // }
+            // .ant-steps-item-content {
+            //     width: calc(100% - 30px);
+            //     .ant-steps-item-title {
+            //         font-size: 14px;
+            //     }
+            // }
+        }
+    }
+}

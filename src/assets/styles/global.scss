@@ -1,6 +1,6 @@
 $theme_color: #333fff; // 主题色
 $gray_color: #646464; // 灰色值
-$danger_color: #FF4F4D;
+$danger_color: #ff4f4d;
 $header_height: 60px; // 顶部导航栏的高度
 @mixin form_item($display, $label_width) {
     // 表单控件中label和表单的排列样式
@@ -20,6 +20,7 @@ $header_height: 60px; // 顶部导航栏的高度
 @mixin btn_style {
     // primary按钮样式
     .ant-btn-primary {
+        font-size: 12px;
         background-color: $theme_color;
         border-color: $theme_color;
     }
@@ -28,6 +29,7 @@ $header_height: 60px; // 顶部导航栏的高度
 @mixin danger_btn_style {
     // 红色按钮样式
     .ant-btn-primary {
+        font-size: 12px;
         background-color: $danger_color;
         border-color: $danger_color;
     }
@@ -51,7 +53,7 @@ $header_height: 60px; // 顶部导航栏的高度
     }
 }
 
-@mixin ant_card {
+@mixin left_ant_card {
     .ant-card {
         box-shadow: 3px 3px 12px 0px #dddcdc;
         border-radius: 10px;
@@ -60,7 +62,7 @@ $header_height: 60px; // 顶部导航栏的高度
             border: none;
             position: relative;
             &::before {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 50%;
                 left: 0;
@@ -70,6 +72,43 @@ $header_height: 60px; // 顶部导航栏的高度
                 background-color: $theme_color;
                 border-radius: 3px;
             }
+        }
+    }
+}
+
+@mixin top_ant_card {
+    .ant-card {
+        box-shadow: 3px 3px 12px 0px #dddcdc;
+        border-radius: 10px;
+        text-align: center;
+        padding: 25px 0;
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 0);
+        transition: border-color 0.3s;
+        position: relative;
+        &::before {
+            position: absolute;
+            content: "";
+            left: 50%;
+            transform: translateX(-50%);
+            top: -1px;
+            width: 30px;
+            height: 6px;
+            background: $theme_color;
+            border-radius: 3px;
+        }
+        &:hover {
+            border: 1px solid $theme_color;
+        }
+        .ant-card-head {
+            border: none;
+            min-height: 0;
+            .ant-card-head-title {
+                padding: 0;
+            }
+        }
+        .ant-card-body {
+            padding: 0;
         }
     }
 }
