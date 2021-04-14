@@ -21,3 +21,10 @@
         color: $gray_color;
     }
 }
+.add_props_model {
+    padding-bottom: 10px;
+    .input_label {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
