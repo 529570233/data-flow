@@ -1,0 +1,23 @@
+.set_connection {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    @include form_item(block, 100%);
+    .form_group_title {
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+    .other_props {
+        overflow: auto;
+        .other_props_title {
+            float: left;
+        }
+        .add_props {
+            margin-top: 20px;
+            float: right;
+        }
+    }
+    .other_props_info {
+        margin-top: 6px;
+        color: $gray_color;
+    }
+}

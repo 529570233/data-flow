@@ -115,7 +115,7 @@ class KsqlDbDetailsStreamsDetails extends Component {
             <Button type="primary">查询Stream</Button>
           </span>
           <span className="delete_stream_box">
-            <Button type="primary" onClick={() => this.showModal()}>
+            <Button type="danger" onClick={() => this.showModal()}>
               删除Stream
             </Button>
             <Modal

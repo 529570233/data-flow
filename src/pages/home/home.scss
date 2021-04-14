@@ -10,12 +10,8 @@
             .category_item {
                 display: inline-block;
                 margin-right: 50px;
-                .health_btn {
-                    background-color: #2630bf;
-                    border: none;
-                }
                 .trouble_btn {
-                    background-color: #ffb140;
+                    background-color: $warning_color;
                     border: none;
                 }
                 .category_name {
@@ -23,7 +19,7 @@
                     margin-left: 10px;
                     font-size: 18px;
                     font-weight: 600;
-                    color: #222222;
+                    color: #222;
                 }
             }
         }
@@ -34,7 +30,7 @@
             .ant-card {
                 box-shadow: 3px 3px 12px 0px #DDDCDC;
                 .ant-card-head {
-                    background-color: #2630bf;
+                    background-color: $theme_color;
                     color: #fff;
                     border-radius: 20px 20px 0px 0px;
                     .ant-card-head-wrapper {
@@ -57,10 +53,10 @@
             }
             .unhealth_cluster {
                 .ant-card-head {
-                    background-color: #FFB140;
+                    background-color: $warning_color;
                     .ant-card-head-wrapper {
                         .ant-card-extra {
-                            background: #FAC476;
+                            background: $warning_color;
                             border: 1px solid #FDE9CC;
                         }
                     }

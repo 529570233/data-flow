@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./addConnection.scss";
 import { Link } from "react-router-dom";
 import { Breadcrumb, Button, Steps, Row, Col } from "antd";
+import SetConnection from "./setConnection/setConnection";
 
 const { Step } = Steps;
 class AddConnection extends Component {
@@ -70,23 +71,25 @@ class AddConnection extends Component {
 
         <div className="connection_content">
           <Row gutter={150}>
-            <Col span={13}>
+            <Col span={14}>
               <div className="step_form">
                 <Steps current={current}>
                   {stepsLeft.map(item => (
                     <Step key={item} title={item} />
                   ))}
                 </Steps>
-                <div className="steps-content">{stepsLeft[current]}</div>
+                <div className="steps-content">
+                  {current === 0 ? <SetConnection /> : "step2"}
+                </div>
                 <div className="steps-action">
                   {current < stepsLeft.length - 1 && (
                     <Button type="primary" onClick={() => this.next()}>
-                      Next
+                      下一步
                     </Button>
                   )}
                   {current === stepsLeft.length - 1 && (
                     <Button type="primary" onClick={() => this.done()}>
-                      Done
+                      完成
                     </Button>
                   )}
                   {current > 0 && (
@@ -94,13 +97,13 @@ class AddConnection extends Component {
                       style={{ marginLeft: 8 }}
                       onClick={() => this.prev()}
                     >
-                      Previous
+                      上一步
                     </Button>
                   )}
                 </div>
               </div>
             </Col>
-            <Col span={11}>
+            <Col span={10}>
               <div className="step_process">
                 <Steps progressDot current={1} direction="vertical">
                   {stepsRight.map(item => (

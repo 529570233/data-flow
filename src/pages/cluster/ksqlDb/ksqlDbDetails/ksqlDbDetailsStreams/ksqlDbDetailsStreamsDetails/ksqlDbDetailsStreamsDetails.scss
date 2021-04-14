@@ -5,11 +5,7 @@
     .action {
         margin-top: 40px;
         .query_stream_box {
-            @include btn_style;
             margin-right: 15px;
-        }
-        .delete_stream_box {
-            @include danger_btn_style;
         }
     }
 }

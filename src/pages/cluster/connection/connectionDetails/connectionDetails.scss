@@ -7,7 +7,6 @@
         .add_connection {
             overflow: auto;
             margin-bottom: 20px;
-            @include btn_style;
             .ant-btn-primary {
                 float: right;
             }

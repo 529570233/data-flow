@@ -21,7 +21,7 @@ class AgentDetails extends Component {
         <h2 className="agent_title">{agentName}</h2>
         <div className="agent_details_cards">
           <div className="delete_agent">
-            <Button type="primary">
+            <Button type="danger">
               删除Stream
             </Button>
           </div>

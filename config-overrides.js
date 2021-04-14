@@ -9,12 +9,21 @@ module.exports = override(
   fixBabelImports("import", {
     libraryName: "antd",
     libraryDirectory: "es",
-    // style: "css",
     style: true,
   }),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars: { "@primary-color": "#1DA57A" },
+    modifyVars: {
+      "@primary-color": "#333fff", // 全局主色
+      "@link-color": "#333fff", // 链接色
+      // "@success-color": "#52c41a", // 成功色
+      "@warning-color": "#ffb140", // 警告色
+      "@error-color": "#ff4f4d", // 错误色
+      "@font-size-base": "14px", // 主字号
+      "@text-color-secondary": "#646464", // 次文本色
+      "@btn-danger-bg": "#ff4f4d",
+      "@btn-danger-border": "#ff4f4d",
+    },
   }),
   adjustStyleLoaders(rule => {
     if (rule.test.toString().includes("scss")) {

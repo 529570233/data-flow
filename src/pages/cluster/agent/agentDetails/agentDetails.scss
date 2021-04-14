@@ -7,8 +7,7 @@
         .delete_agent {
             overflow: auto;
             margin-bottom: 20px;
-            @include danger_btn_style;
-            .ant-btn-primary {
+            .ant-btn-danger {
                 float: right;
             }
         }

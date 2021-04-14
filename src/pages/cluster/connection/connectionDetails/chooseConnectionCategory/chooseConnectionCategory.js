@@ -66,7 +66,7 @@ class ChooseConnectionCategory extends Component {
             </Col>
             <Col span={19}>
               <div className="upload_file">
-                <Button type="primary" onClick={() => this.showModal(true)}>
+                <Button type="primary">
                   上传连接器配置文件
                 </Button>
               </div>

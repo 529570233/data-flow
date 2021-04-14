@@ -1,15 +1,4 @@
 .switch_btn {
-    .ant-switch-checked {
-        background: #EBECFF;
-        .ant-switch-inner {
-            .anticon-check {
-                color: $theme_color;
-            }
-        }
-        &::after {
-            background-color: $theme_color;
-        }
-    }
     .switch_name {
         margin-left: 10px;
         color: $gray_color;

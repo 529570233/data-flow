@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "./home.scss";
 import { Button, Card, Col, Row, List } from "antd";
 import SearchInput from "../../components/searchInput/searchInput";
@@ -65,7 +64,7 @@ class Home extends Component {
           <h1 className="title">集群</h1>
           <ul className="category">
             <li className="category_item">
-              <Button type="primary" size={"large"} className="health_btn">
+              <Button type="primary" size={"large"}>
                 1
               </Button>
               <span className="category_name">健康集群</span>

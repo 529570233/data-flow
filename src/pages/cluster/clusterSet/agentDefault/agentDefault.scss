@@ -9,12 +9,10 @@
         }
         .edit_btn {
             float: right;
-            @include btn_style;
         }
         .download_btn {
             float: right;
             margin-left: 20px;
-            @include btn_style;
         }
     }
     .description_list {

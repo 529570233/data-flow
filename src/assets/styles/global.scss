@@ -1,7 +1,15 @@
 $theme_color: #333fff; // 主题色
 $gray_color: #646464; // 灰色值
-$danger_color: #ff4f4d;
+$warning_color: #ffb140; // 警告提示色
+$danger_color: #ff4f4d; // 危险色
 $header_height: 60px; // 顶部导航栏的高度
+.ant-tabs {
+    // tabs标签页切换
+    .ant-tabs-tab {
+        font-weight: 900;
+    }
+}
+
 @mixin form_item($display, $label_width) {
     // 表单控件中label和表单的排列样式
     .ant-form-item-label {
@@ -14,42 +22,6 @@ $header_height: 60px; // 顶部导航栏的高度
     }
     .ant-form-item-control-wrapper {
         display: $display;
-    }
-}
-
-@mixin btn_style {
-    // primary按钮样式
-    .ant-btn-primary {
-        font-size: 12px;
-        background-color: $theme_color;
-        border-color: $theme_color;
-    }
-}
-
-@mixin danger_btn_style {
-    // 红色按钮样式
-    .ant-btn-primary {
-        font-size: 12px;
-        background-color: $danger_color;
-        border-color: $danger_color;
-    }
-}
-
-@mixin tabs_style {
-    // tabs标签页切换
-    .ant-tabs {
-        .ant-tabs-tab {
-            font-weight: 900;
-            &:hover {
-                color: $theme_color;
-            }
-        }
-        .ant-tabs-tab-active {
-            color: $theme_color;
-        }
-        .ant-tabs-ink-bar {
-            background-color: $theme_color;
-        }
     }
 }
 

@@ -32,6 +32,9 @@
     }
     .ant-menu-submenu-active {
         background-color: $theme_color;
+        span {
+            color: #fff;
+        }
     }
     .data_flow_icon {
         margin-right: 4px;
