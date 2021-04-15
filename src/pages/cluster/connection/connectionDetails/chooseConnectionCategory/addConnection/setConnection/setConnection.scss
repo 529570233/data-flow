@@ -20,7 +20,19 @@
         margin-top: 6px;
         color: $gray_color;
     }
+    .other_props_input {
+        position: relative;
+    }
+    .remove_other_props {
+        position: absolute;
+        right: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: $gray_color;
+    }
 }
+
 .add_props_model {
     padding-bottom: 10px;
     .input_label {

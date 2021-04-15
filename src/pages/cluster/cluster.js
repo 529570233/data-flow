@@ -16,6 +16,7 @@ import ThemeDetails from "./theme/themeDetails/themeDetails";
 import ConnectionDetails from "./connection/connectionDetails/connectionDetails";
 import ChooseConnectionCategory from "./connection/connectionDetails/chooseConnectionCategory/chooseConnectionCategory";
 import AddConnection from "./connection/connectionDetails/chooseConnectionCategory/addConnection/addConnection";
+import ConsumerDetails from "./consumer/consumerDetails/consumerDetails";
 
 class Cluster extends Component {
   handleClick = e => {
@@ -81,6 +82,7 @@ class Cluster extends Component {
             <Route path="/cluster/ksqlDb" exact component={KsqlDb} />
             <Route path="/cluster/ksqlDb/*" exact component={KsqlDbDetails} />
             <Route path="/cluster/consumer" exact component={Consumer} />
+            <Route path="/cluster/consumer/*" exact component={ConsumerDetails} />
             <Route path="/cluster/clusterSet" exact component={ClusterSet} />
             <Route path="/cluster/connection" exact component={Connection} />
             <Route path="/cluster/connection/*/choose" exact component={ChooseConnectionCategory} />

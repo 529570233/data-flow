@@ -1,26 +1,10 @@
 import React, { Component } from "react";
 import "./consumer.scss";
-
+import { Link } from "react-router-dom";
 import { Table, Row, Col } from "antd";
 import SearchInput from "../../../components/searchInput/searchInput";
 
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-];
+const { Column } = Table;
 class Consumer extends Component {
   state = {
     tableDate: [
@@ -55,12 +39,19 @@ class Consumer extends Component {
               <SearchInput placeholder="搜索消费群体" />
             </Col>
           </Row>
-          <Table
-            bordered
-            columns={columns}
-            dataSource={tableDate}
-            style={{ marginTop: "30px" }}
-          />
+          <Table bordered dataSource={tableDate} style={{ marginTop: "30px" }}>
+            <Column
+              title="Name"
+              dataIndex="name"
+              render={(text, record) => (
+                <Link to={`/cluster/consumer/${text}?consumer_name=${text}`}>
+                  {text}
+                </Link>
+              )}
+            />
+            <Column title="Age" dataIndex="age" />
+            <Column title="Address" dataIndex="address" />
+          </Table>
         </div>
       </div>
     );

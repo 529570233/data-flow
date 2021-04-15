@@ -5,27 +5,7 @@ import qs from "qs";
 import { Breadcrumb, Select, DatePicker, Col, Row, Card } from "antd";
 import ReactEChartsCore from "echarts-for-react/lib/core";
 import * as echarts from "echarts/core";
-import { LineChart } from "echarts/charts";
-import { CanvasRenderer } from "echarts/renderers";
-import {
-  GridSimpleComponent,
-  ToolboxComponent,
-  TooltipComponent,
-  TitleComponent,
-  MarkPointComponent,
-  MarkLineComponent,
-} from "echarts/components";
-
-echarts.use([
-  LineChart,
-  CanvasRenderer,
-  GridSimpleComponent,
-  TitleComponent,
-  TooltipComponent,
-  MarkLineComponent,
-  ToolboxComponent,
-  MarkPointComponent,
-]);
+import "../../../../utils/echarts";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -38,7 +18,7 @@ class AgentIndicator extends Component {
     console.log(date, dateString);
   }
 
-  getOption = () => {
+  getOption() {
     return {
       title: {
         text: "未来一周气温变化",
@@ -165,7 +145,7 @@ class AgentIndicator extends Component {
                   <li className="chart_item">
                     <ReactEChartsCore
                       echarts={echarts}
-                      option={this.getOption()}
+                      option={this.getOption.call(this)}
                       notMerge={true}
                       lazyUpdate={true}
                     />
@@ -173,7 +153,7 @@ class AgentIndicator extends Component {
                   <li className="chart_item">
                     <ReactEChartsCore
                       echarts={echarts}
-                      option={this.getOption()}
+                      option={this.getOption.call(this)}
                       notMerge={true}
                       lazyUpdate={true}
                     />
@@ -187,7 +167,7 @@ class AgentIndicator extends Component {
                   <li className="chart_item">
                     <ReactEChartsCore
                       echarts={echarts}
-                      option={this.getOption()}
+                      option={this.getOption.call(this)}
                       notMerge={true}
                       lazyUpdate={true}
                     />
@@ -195,7 +175,7 @@ class AgentIndicator extends Component {
                   <li className="chart_item">
                     <ReactEChartsCore
                       echarts={echarts}
-                      option={this.getOption()}
+                      option={this.getOption.call(this)}
                       notMerge={true}
                       lazyUpdate={true}
                     />

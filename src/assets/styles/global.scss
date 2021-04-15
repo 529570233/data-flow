@@ -25,6 +25,14 @@ $header_height: 60px; // 顶部导航栏的高度
     }
 }
 
+@mixin ant_card {
+    .ant-card {
+        box-shadow: 3px 3px 12px 0px #dddcdc;
+        border-radius: 10px;
+        border: none;
+    }
+}
+
 @mixin left_ant_card {
     .ant-card {
         box-shadow: 3px 3px 12px 0px #dddcdc;

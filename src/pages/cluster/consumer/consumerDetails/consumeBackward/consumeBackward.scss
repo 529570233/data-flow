@@ -1,0 +1,24 @@
+.consume_backward {
+    padding-top: 20px;
+    @include ant_card;
+    .set_warning {
+        overflow: auto;
+        margin-bottom: 15px;
+        button {
+            float: right;
+        }
+    }
+    .prefix_icon {
+        font-size: 20px;
+    }
+    .suffix_icon {
+        font-size: 30px;
+        color: $theme_color;
+        margin-left: 10px;
+    }
+    .chart_data {
+        .chart_data_item {
+            height: 300px;
+        }
+    }
+}
