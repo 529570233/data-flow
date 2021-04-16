@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ksqlDbDetailsEdit.scss';
 import { Row, Col, Tree } from 'antd';
-import SearchInput from '../../../../../components/searchInput/searchInput';
+import SearchInput from '@/components/searchInput/searchInput';
 
 const { TreeNode } = Tree;
 class KsqlDbDetailsEdit extends Component {

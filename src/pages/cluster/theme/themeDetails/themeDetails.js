@@ -5,6 +5,7 @@ import { Tabs, Breadcrumb } from "antd";
 import qs from "qs";
 import ThemeOverview from "./themeOverview/themeOverview";
 import ThemeConfig from "./themeConfig/themeConfig";
+import ThemeFramework from "./themeFramework/themeFramework";
 
 const { TabPane } = Tabs;
 class ThemeDetails extends Component {
@@ -28,13 +29,13 @@ class ThemeDetails extends Component {
         <div className="theme_content">
           <Tabs defaultActiveKey="1" onChange={this.callback}>
             <TabPane tab="概览" key="1">
-              <ThemeOverview />
+              <ThemeOverview themeName={themeName} />
             </TabPane>
             <TabPane tab="消息" key="2">
               222
             </TabPane>
             <TabPane tab="架构" key="3">
-              333
+              <ThemeFramework />
             </TabPane>
             <TabPane tab="配置" key="4">
               <ThemeConfig />

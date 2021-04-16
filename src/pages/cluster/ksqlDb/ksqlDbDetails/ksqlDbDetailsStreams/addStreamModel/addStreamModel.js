@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./addStreamModel.scss";
 import { Button, Modal, List, Icon, Form, Input, Select, Row, Col } from "antd";
-import SearchInput from "../../../../../../components/searchInput/searchInput";
-import CheckBox from "../../../../../../components/checkBox/checkBox";
+import SearchInput from "@/components/searchInput/searchInput";
+import CheckBox from "@/components/checkBox/checkBox";
 
 const { Option } = Select;
 class AddStreamModel extends Component {
@@ -283,4 +283,4 @@ class AddStreamModel extends Component {
   }
 }
 
-export default Form.create({ name: "addStream" })(AddStreamModel);
+export default Form.create({ name: "addStreamModel" })(AddStreamModel);

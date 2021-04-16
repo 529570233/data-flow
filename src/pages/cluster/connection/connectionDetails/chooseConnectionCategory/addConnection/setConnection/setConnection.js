@@ -229,4 +229,4 @@ class SetConnection extends Component {
   }
 }
 
-export default Form.create({ name: "SetConnection" })(SetConnection);
+export default Form.create({ name: "setConnection" })(SetConnection);

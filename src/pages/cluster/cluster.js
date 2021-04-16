@@ -17,6 +17,8 @@ import ConnectionDetails from "./connection/connectionDetails/connectionDetails"
 import ChooseConnectionCategory from "./connection/connectionDetails/chooseConnectionCategory/chooseConnectionCategory";
 import AddConnection from "./connection/connectionDetails/chooseConnectionCategory/addConnection/addConnection";
 import ConsumerDetails from "./consumer/consumerDetails/consumerDetails";
+import ThemeIndicator from "./theme/themeDetails/themeOverview/themeIndicator/themeIndicator";
+import AddTheme from "./theme/addTheme/addTheme";
 
 class Cluster extends Component {
   handleClick = e => {
@@ -75,19 +77,45 @@ class Cluster extends Component {
             <Route path="/cluster" exact component={Overview} />
             <Route path="/cluster/overview" exact component={Overview} />
             <Route path="/cluster/theme" exact component={Theme} />
+            <Route path="/cluster/theme/add" exact component={AddTheme} />
+            <Route
+              path="/cluster/theme/*/indicator"
+              exact
+              component={ThemeIndicator}
+            />
             <Route path="/cluster/theme/*" exact component={ThemeDetails} />
             <Route path="/cluster/agent" exact component={Agent} />
-            <Route path="/cluster/agent/details/*" exact component={AgentDetails} />
-            <Route path="/cluster/agent/indicator/*" exact component={AgentIndicator} />
+            <Route
+              path="/cluster/agent/indicator"
+              exact
+              component={AgentIndicator}
+            />
+            <Route path="/cluster/agent/*" exact component={AgentDetails} />
             <Route path="/cluster/ksqlDb" exact component={KsqlDb} />
             <Route path="/cluster/ksqlDb/*" exact component={KsqlDbDetails} />
             <Route path="/cluster/consumer" exact component={Consumer} />
-            <Route path="/cluster/consumer/*" exact component={ConsumerDetails} />
+            <Route
+              path="/cluster/consumer/*"
+              exact
+              component={ConsumerDetails}
+            />
             <Route path="/cluster/clusterSet" exact component={ClusterSet} />
             <Route path="/cluster/connection" exact component={Connection} />
-            <Route path="/cluster/connection/*/choose" exact component={ChooseConnectionCategory} />
-            <Route path="/cluster/connection/*/choose/add" exact component={AddConnection} />
-            <Route path="/cluster/connection/*" exact component={ConnectionDetails} />
+            <Route
+              path="/cluster/connection/*/choose"
+              exact
+              component={ChooseConnectionCategory}
+            />
+            <Route
+              path="/cluster/connection/*/choose/add"
+              exact
+              component={AddConnection}
+            />
+            <Route
+              path="/cluster/connection/*"
+              exact
+              component={ConnectionDetails}
+            />
           </Switch>
         </div>
       </div>

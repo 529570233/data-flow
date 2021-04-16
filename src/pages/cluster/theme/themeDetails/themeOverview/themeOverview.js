@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./themeOverview.scss";
+import { withRouter } from "react-router-dom";
 import { Row, Col, Card, Table } from "antd";
-import SearchInput from "../../../../../components/searchInput/searchInput";
+import SearchInput from "@/components/searchInput/searchInput";
 
 const { Column, ColumnGroup } = Table;
 class ThemeOverview extends Component {
@@ -31,9 +32,10 @@ class ThemeOverview extends Component {
     ],
   };
   goIndicatorPage(name) {
-    // this.props.history.push(
-    //   `/cluster/agent/indicator/indicator1?indicator_name=${name}`
-    // );
+    let {themeName} = this.props;
+    this.props.history.push(
+      `/cluster/theme/${themeName}/indicator?indicator_name=${name}`
+    );
   }
   render() {
     let { tableData } = this.state;
@@ -44,7 +46,7 @@ class ThemeOverview extends Component {
             <Card
               title="生产"
               bordered={false}
-              onClick={() => this.goIndicatorPage("indicator1")}
+              onClick={() => this.goIndicatorPage("生产")}
             >
               Card content
             </Card>
@@ -81,12 +83,12 @@ class ThemeOverview extends Component {
           </Row>
         </div>
         <div className="part_tatle">
-          <Table dataSource={tableData} bordered style={{ marginTop: "30px" }}>
-            <Column title="ksqlDB应用程序名称" dataIndex="name" />
+          <Table dataSource={tableData} bordered>
+            <Column align="center" title="ksqlDB应用程序名称" dataIndex="name" />
             <ColumnGroup title="有效性">
-              <Column title="复制分区" dataIndex="copy_area" />
-              <Column title="非同步跟随者" dataIndex="async_follower" />
-              <Column title="非同步观察者" dataIndex="async_observer" />
+              <Column align="center" title="复制分区" dataIndex="copy_area" />
+              <Column align="center" title="非同步跟随者" dataIndex="async_follower" />
+              <Column align="center" title="非同步观察者" dataIndex="async_observer" />
             </ColumnGroup>
           </Table>
         </div>
@@ -95,4 +97,4 @@ class ThemeOverview extends Component {
   }
 }
 
-export default ThemeOverview;
+export default withRouter(ThemeOverview);

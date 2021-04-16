@@ -8,8 +8,8 @@ class Header extends Component {
   render() {
     return (
       <Affix offsetTop={0}>
-        <Menu mode="horizontal" className="head">
-          <Menu.Item key="logo">
+        <Menu mode="horizontal" className="head_nav">
+          <Menu.Item key="logo" className="main_title">
             <NavLink to="/home" exact>
               <span>LOGO</span>
               <span style={{ fontSize: "22px" }}>流式数据引擎处理</span>
@@ -32,16 +32,16 @@ class Header extends Component {
             }
           >
             <Menu.Item key="cluster1">
-              <NavLink to="/cluster">集群1</NavLink>
+              <NavLink to="/cluster" exact activeClassName="active" className="active">集群1</NavLink>
             </Menu.Item>
             <Menu.Item key="cluster2">
-              <NavLink to="/cluster">集群2</NavLink>
+              <NavLink to="/cluster" exact>集群2</NavLink>
             </Menu.Item>
             <Menu.Item key="cluster3">
-              <NavLink to="/cluster">集群3</NavLink>
+              <NavLink to="/cluster" exact>集群3</NavLink>
             </Menu.Item>
             <Menu.Item key="cluster4">
-              <NavLink to="/cluster">集群4</NavLink>
+              <NavLink to="/cluster" exact>集群4</NavLink>
             </Menu.Item>
           </SubMenu>
           <Menu.Item key="username" style={{ float: "right" }}>

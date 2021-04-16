@@ -3,7 +3,9 @@ const {
   fixBabelImports,
   adjustStyleLoaders,
   addLessLoader,
+  addWebpackAlias,
 } = require("customize-cra");
+const path = require('path')
 
 module.exports = override(
   fixBabelImports("import", {
@@ -12,6 +14,7 @@ module.exports = override(
     style: true,
   }),
   addLessLoader({
+    // 自定义antd主题色
     javascriptEnabled: true,
     modifyVars: {
       "@primary-color": "#333fff", // 全局主色
@@ -26,6 +29,7 @@ module.exports = override(
     },
   }),
   adjustStyleLoaders(rule => {
+    // 配置scss全局变量
     if (rule.test.toString().includes("scss")) {
       rule.use.push({
         loader: require.resolve("sass-resources-loader"),
@@ -34,5 +38,8 @@ module.exports = override(
         },
       });
     }
+  }),
+  addWebpackAlias({
+    "@": path.resolve(__dirname, "./src"),
   })
 );

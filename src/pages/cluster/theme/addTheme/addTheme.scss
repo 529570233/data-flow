@@ -1,0 +1,9 @@
+.add_theme {
+    .add_theme_form {
+        padding-top: 30px;
+        @include form_item(inline-block, 80px);
+        .default_config_btn {
+            margin-right: 15px;
+        }
+    }
+}

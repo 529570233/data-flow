@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./agent.scss";
 import { Card, Col, Row, Table } from "antd";
-import SearchInput from "../../../components/searchInput/searchInput";
+import SearchInput from "@/components/searchInput/searchInput";
 
 const { Column, ColumnGroup } = Table;
 class Agent extends Component {
@@ -33,7 +33,7 @@ class Agent extends Component {
   };
   goIndicatorPage(name) {
     this.props.history.push(
-      `/cluster/agent/indicator/indicator1?indicator_name=${name}`
+      `/cluster/agent/indicator?indicator_name=${name}`
     );
   }
   render() {
@@ -47,7 +47,7 @@ class Agent extends Component {
               <Card
                 title="生产"
                 bordered={false}
-                onClick={() => this.goIndicatorPage("indicator1")}
+                onClick={() => this.goIndicatorPage("生产")}
               >
                 Card content
               </Card>
@@ -89,26 +89,31 @@ class Agent extends Component {
             </Row>
           </div>
           <div className="agent_tatle">
-            <Table
-              dataSource={tableData}
-              bordered
-              style={{ marginTop: "30px" }}
-            >
+            <Table dataSource={tableData} bordered>
               <Column
                 title="ksqlDB应用程序名称"
                 dataIndex="name"
+                align="center"
                 render={(text, record) => (
                   <Link
-                    to={`/cluster/agent/details/${text}?agent_name=${text}`}
+                    to={`/cluster/agent/${text}?agent_name=${text}`}
                   >
                     {text}
                   </Link>
                 )}
               />
               <ColumnGroup title="有效性">
-                <Column title="复制分区" dataIndex="copy_area" />
-                <Column title="非同步跟随者" dataIndex="async_follower" />
-                <Column title="非同步观察者" dataIndex="async_observer" />
+                <Column align="center" title="复制分区" dataIndex="copy_area" />
+                <Column
+                  align="center"
+                  title="非同步跟随者"
+                  dataIndex="async_follower"
+                />
+                <Column
+                  align="center"
+                  title="非同步观察者"
+                  dataIndex="async_observer"
+                />
               </ColumnGroup>
             </Table>
           </div>

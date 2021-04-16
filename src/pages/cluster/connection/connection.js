@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./connection.scss";
 import { Link } from "react-router-dom";
 import { Table, Row, Col } from "antd";
-import SearchInput from "../../../components/searchInput/searchInput";
+import SearchInput from "@/components/searchInput/searchInput";
 
 const { Column } = Table;
 class Connection extends Component {
@@ -43,6 +43,7 @@ class Connection extends Component {
             <Column
               title="集群名称"
               dataIndex="name"
+              align="center"
               render={(text, record) => (
                 <Link to={`/cluster/connection/${text}?connection_name=${text}`}>
                   {text}
@@ -52,10 +53,12 @@ class Connection extends Component {
             <Column
               title="连接器总数"
               dataIndex="age"
+              align="center"
             />
             <Column
               title="运行的连接器"
               dataIndex="address"
+              align="center"
             />
           </Table>
         </div>

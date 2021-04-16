@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./consumer.scss";
 import { Link } from "react-router-dom";
 import { Table, Row, Col } from "antd";
-import SearchInput from "../../../components/searchInput/searchInput";
+import SearchInput from "@/components/searchInput/searchInput";
 
 const { Column } = Table;
 class Consumer extends Component {
@@ -43,14 +43,15 @@ class Consumer extends Component {
             <Column
               title="Name"
               dataIndex="name"
+              align='center'
               render={(text, record) => (
                 <Link to={`/cluster/consumer/${text}?consumer_name=${text}`}>
                   {text}
                 </Link>
               )}
             />
-            <Column title="Age" dataIndex="age" />
-            <Column title="Address" dataIndex="address" />
+            <Column title="Age" dataIndex="age" align='center' />
+            <Column title="Address" dataIndex="address" align='center' />
           </Table>
         </div>
       </div>

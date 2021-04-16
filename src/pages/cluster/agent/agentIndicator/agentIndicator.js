@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./agentIndicator.scss";
-import qs from "qs";
+// import qs from "qs";
 import { Breadcrumb, Select, DatePicker, Col, Row, Card } from "antd";
 import ReactEChartsCore from "echarts-for-react/lib/core";
 import * as echarts from "echarts/core";
-import "../../../../utils/echarts";
+import "@/utils/echarts";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -102,19 +102,19 @@ class AgentIndicator extends Component {
   };
 
   render() {
-    let {
-        location: { search },
-      } = this.props,
-      indicatorName = qs.parse(search.substring(1)).indicator_name;
+    // let {
+    //     location: { search },
+    //   } = this.props,
+    //   indicatorName = qs.parse(search.substring(1)).indicator_name;
     return (
       <div className="agent_indicator">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
             <Link to="/cluster/agent">代理概览</Link>
           </Breadcrumb.Item>
-          <Breadcrumb.Item>{indicatorName}</Breadcrumb.Item>
+          <Breadcrumb.Item>指标</Breadcrumb.Item>
         </Breadcrumb>
-        <h2 className="agent_indicator_title">{indicatorName}</h2>
+        <h2 className="agent_indicator_title">指标</h2>
         <div className="filter">
           <Row gutter={20}>
             <Col span={5}>
@@ -162,7 +162,7 @@ class AgentIndicator extends Component {
               </Card>
             </Col>
             <Col span={12}>
-              <Card title="生产" bordered={false}>
+              <Card title="消费" bordered={false}>
                 <ul className="chart_box">
                   <li className="chart_item">
                     <ReactEChartsCore

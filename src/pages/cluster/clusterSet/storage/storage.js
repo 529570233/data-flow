@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./storage.scss";
 import { Form, Select, Button, Tabs, Collapse } from "antd";
-import CheckBox from "../../../../components/checkBox/checkBox";
+import CheckBox from "@/components/checkBox/checkBox";
 import HideSetLayerStorageConfig from "./hideSetLayerStorageConfig/hideSetLayerStorageConfig";
 
 const { Option } = Select;
@@ -167,4 +167,4 @@ class Storage extends Component {
   }
 }
 
-export default Form.create({ name: "selectSet" })(Storage);
+export default Form.create({ name: "storage" })(Storage);

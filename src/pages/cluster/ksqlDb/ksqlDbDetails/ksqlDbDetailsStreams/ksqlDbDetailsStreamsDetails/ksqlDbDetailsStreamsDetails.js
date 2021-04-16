@@ -142,6 +142,6 @@ class KsqlDbDetailsStreamsDetails extends Component {
   }
 }
 
-export default Form.create({ name: "deleteStream" })(
+export default Form.create({ name: "ksqlDbDetailsStreamsDetails" })(
   KsqlDbDetailsStreamsDetails
 );

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./theme.scss";
 import { Link } from "react-router-dom";
 import { Button, Table, Row, Col } from "antd";
-import SearchInput from "../../../components/searchInput/searchInput";
-import SwitchBtn from "../../../components/switchBtn/switchBtn";
+import SearchInput from "@/components/searchInput/searchInput";
+import SwitchBtn from "@/components/switchBtn/switchBtn";
 
 const { Column, ColumnGroup } = Table;
 class Theme extends Component {
@@ -60,9 +60,11 @@ class Theme extends Component {
               </Col>
               <Col span={6}>
                 <div className="add_theme_box">
-                  <Button type="primary" icon="plus">
-                    新增主题
-                  </Button>
+                  <Link to="/cluster/theme/add">
+                    <Button type="primary" icon="plus">
+                      新增主题
+                    </Button>
+                  </Link>
                 </div>
               </Col>
             </Row>
@@ -71,6 +73,7 @@ class Theme extends Component {
             <Column
               title="主题名称"
               dataIndex="name"
+              align="center"
               render={(text, record) => (
                 <Link to={`/cluster/theme/${text}?theme_name=${text}`}>
                   {text}
@@ -78,13 +81,25 @@ class Theme extends Component {
               )}
             />
             <ColumnGroup title="有效性">
-              <Column title="复制分区" dataIndex="copy_area" />
-              <Column title="非同步跟随者" dataIndex="async_follower" />
-              <Column title="非同步观察者" dataIndex="async_observer" />
+              <Column align="center" title="复制分区" dataIndex="copy_area" />
+              <Column
+                align="center"
+                title="非同步跟随者"
+                dataIndex="async_follower"
+              />
+              <Column
+                align="center"
+                title="非同步观察者"
+                dataIndex="async_observer"
+              />
             </ColumnGroup>
             <ColumnGroup title="吞吐量">
-              <Column title="字节/秒 生产" dataIndex="production" />
-              <Column title="字节/秒 消费" dataIndex="consume" />
+              <Column
+                align="center"
+                title="字节/秒 生产"
+                dataIndex="production"
+              />
+              <Column align="center" title="字节/秒 消费" dataIndex="consume" />
             </ColumnGroup>
           </Table>
         </div>

@@ -10,6 +10,6 @@
     }
     .connection_category {
         margin-top: 30px;
-        @include top_ant_card;
+        @include top_ant_card(pointer);
     }
 }

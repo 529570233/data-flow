@@ -3,6 +3,7 @@ $gray_color: #646464; // 灰色值
 $warning_color: #ffb140; // 警告提示色
 $danger_color: #ff4f4d; // 危险色
 $header_height: 60px; // 顶部导航栏的高度
+$side_nav_width: 260px; // 侧边栏的宽度
 .ant-tabs {
     // tabs标签页切换
     .ant-tabs-tab {
@@ -33,11 +34,11 @@ $header_height: 60px; // 顶部导航栏的高度
     }
 }
 
-@mixin left_ant_card {
+@mixin left_ant_card($cursor: auto) {
     .ant-card {
         box-shadow: 3px 3px 12px 0px #dddcdc;
         border-radius: 10px;
-        cursor: pointer;
+        cursor: $cursor;
         .ant-card-head {
             border: none;
             position: relative;
@@ -56,13 +57,13 @@ $header_height: 60px; // 顶部导航栏的高度
     }
 }
 
-@mixin top_ant_card {
+@mixin top_ant_card($cursor: auto) {
     .ant-card {
         box-shadow: 3px 3px 12px 0px #dddcdc;
         border-radius: 10px;
         text-align: center;
         padding: 25px 0;
-        cursor: pointer;
+        cursor: $cursor;
         border: 1px solid rgba(0, 0, 0, 0);
         transition: border-color 0.3s;
         position: relative;

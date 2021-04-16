@@ -48,4 +48,4 @@ class General extends Component {
   }
 }
 
-export default Form.create({ name: "clusterSet" })(General);
+export default Form.create({ name: "general" })(General);

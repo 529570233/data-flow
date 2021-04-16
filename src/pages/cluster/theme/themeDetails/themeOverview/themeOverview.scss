@@ -1,6 +1,6 @@
 .theme_overview {
     padding-top: 20px;
-    @include left_ant_card;
+    @include left_ant_card(pointer);
     .card_data_list {
         display: flex;
         justify-content: space-between;

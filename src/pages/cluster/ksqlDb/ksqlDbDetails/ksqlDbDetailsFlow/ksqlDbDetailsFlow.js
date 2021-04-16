@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ksqlDbDetailsFlow.scss";
 import { Card, Row, Col, Drawer, Tabs, Tree } from "antd";
-import SearchInput from "../../../../../components/searchInput/searchInput";
+import SearchInput from "@/components/searchInput/searchInput";
 
 const { TabPane } = Tabs;
 const { TreeNode } = Tree;

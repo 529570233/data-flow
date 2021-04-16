@@ -1,8 +1,14 @@
-.head {
+.head_nav {
     background-color: #0d1040;
     height: $header_height;
     line-height: $header_height;
     border-bottom: none;
+    .main_title {
+        width: $side_nav_width;
+        &:hover {
+            background: none !important;
+        }
+    }
     .ant-menu-submenu {
         top: 0;
         color: #fff;
@@ -16,6 +22,12 @@
             }
         }
     }
+    .ant-menu-submenu-active {
+        background-color: $theme_color;
+        span {
+            color: #fff;
+        }
+    }
     .ant-menu-item {
         border-bottom: none !important;
         top: 0;
@@ -27,12 +39,6 @@
         }
         a {
             height: $header_height;
-            color: #fff;
-        }
-    }
-    .ant-menu-submenu-active {
-        background-color: $theme_color;
-        span {
             color: #fff;
         }
     }
@@ -52,22 +58,25 @@
         padding-top: 10px;
         .ant-menu-item {
             float: left;
-            margin-bottom: 10px;
-            margin-right: 20px;
-            background: #ebecff;
-            border: 1px solid #bcc0ff;
-            border-radius: 4px;
-            height: auto;
-            width: auto;
-            line-height: 14px;
-            padding: 8px 18px;
+            padding: 0;
+            margin-right: 15px;
             a {
+                display: inline-block;
+                background: #ebecff;
+                border: 1px solid #bcc0ff;
+                border-radius: 4px;
+                line-height: 14px;
+                padding: 8px 18px;
                 color: $theme_color;
             }
         }
         .ant-menu-item-active {
-            background-color: $theme_color;
             a {
+                background-color: $theme_color;
+                color: #fff;
+            }
+            a.active {
+                background-color: $theme_color;
                 color: #fff;
             }
         }

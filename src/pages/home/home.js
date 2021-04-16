@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./home.scss";
 import { Button, Card, Col, Row, List } from "antd";
-import SearchInput from "../../components/searchInput/searchInput";
+import SearchInput from "@/components/searchInput/searchInput";
 
 class Home extends Component {
   state = {

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import './ksqlDbDetailsStreams.scss';
 import qs from 'qs';
 import { Button, Table, Row, Col } from 'antd';
-import SearchInput from '../../../../../components/searchInput/searchInput';
+import SearchInput from '@/components/searchInput/searchInput';
 import AddStreamModel from './addStreamModel/addStreamModel';
 
 const { Column, ColumnGroup } = Table;
@@ -80,7 +80,7 @@ class KsqlDbDetailsStreams extends Component {
 					<Column
 						title='主题名称'
 						dataIndex='name'
-						key='name'
+						align='center'
 						render={(text, record) => (
 							<Link
 								to={`/cluster/ksqlDb/${ksqlDbName}/${text}?ksqlDb_name=${ksqlDbName}&ksqlDb_stream_name=${text}`}
@@ -90,22 +90,22 @@ class KsqlDbDetailsStreams extends Component {
 						)}
 					/>
 					<ColumnGroup title='有效性'>
-						<Column title='复制分区' dataIndex='copy_area' key='copy_area' />
+						<Column title='复制分区' dataIndex='copy_area' align='center' />
 						<Column
 							title='非同步跟随者'
 							dataIndex='async_follower'
-							key='async_follower'
+							align='center'
 						/>
 						<Column
 							title='非同步观察者'
 							dataIndex='async_observer'
-							key='async_observer'
+							align='center'
 						/>
 					</ColumnGroup>
 					<Column
 						title='字节/秒 生产'
 						dataIndex='production'
-						key='production'
+						align='center'
 					/>
 				</Table>
 			</div>

@@ -1,8 +1,8 @@
 import React from "react";
 import "./agentDefault.scss";
 import { Button, List, Row, Col } from "antd";
-import SwitchBtn from "../../../../components/switchBtn/switchBtn";
-import CheckBox from "../../../../components/checkBox/checkBox";
+import SwitchBtn from "@/components/switchBtn/switchBtn";
+import CheckBox from "@/components/checkBox/checkBox";
 
 const AgentDefault = props => {
   function onChange(e) {
