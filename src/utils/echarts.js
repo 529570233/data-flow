@@ -8,6 +8,7 @@ import {
   TitleComponent,
   MarkPointComponent,
   MarkLineComponent,
+  LegendComponent
 } from "echarts/components";
 
 echarts.use([
@@ -20,4 +21,5 @@ echarts.use([
   MarkLineComponent,
   ToolboxComponent,
   MarkPointComponent,
+  LegendComponent
 ]);
