@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import "./assets/styles/reset.css";
-import "./assets/styles/style.css";
+import "./assets/styles/icon-font.css";
 
 import Head from "./components/head/head";
 import Home from "./pages/home/home";

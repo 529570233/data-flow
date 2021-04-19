@@ -27,13 +27,13 @@ class Cluster extends Component {
 
   state = {
     sidenav: [
-      { title: "概览", icon: "icon-11", link: "/cluster/overview" },
-      { title: "代理", icon: "icon-1", link: "/cluster/agent" },
-      { title: "主题", icon: "icon-18", link: "/cluster/theme" },
-      { title: "连接", icon: "icon-14", link: "/cluster/connection" },
-      { title: "KSQL DB", icon: "icon-16", link: "/cluster/ksqlDb" },
-      { title: "消费者", icon: "icon-16", link: "/cluster/consumer" },
-      { title: "集群设置", icon: "icon-15", link: "/cluster/clusterSet" },
+      { title: "概览", icon: "icon-common", link: "/cluster/overview" },
+      { title: "代理", icon: "icon-broker", link: "/cluster/agent" },
+      { title: "主题", icon: "icon-topic", link: "/cluster/theme" },
+      { title: "连接", icon: "icon-connector", link: "/cluster/connection" },
+      { title: "KSQL DB", icon: "icon-ksqldb", link: "/cluster/ksqlDb" },
+      { title: "消费者", icon: "icon-customer", link: "/cluster/consumer" },
+      { title: "集群设置", icon: "icon-setting", link: "/cluster/clusterSet" },
     ],
   };
 
@@ -56,13 +56,7 @@ class Cluster extends Component {
                   return (
                     <Menu.Item key={index}>
                       <NavLink to={link} exact>
-                        <span className={`${icon} side_nav_icon`}>
-                          <span className="path1"></span>
-                          <span className="path2"></span>
-                          <span className="path3"></span>
-                          <span className="path4"></span>
-                          <span className="path5"></span>
-                        </span>
+                        <span className={`${icon} side_nav_icon`}></span>
                         {title}
                       </NavLink>
                     </Menu.Item>
