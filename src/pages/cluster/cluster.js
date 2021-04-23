@@ -21,10 +21,6 @@ import ThemeIndicator from "./theme/themeDetails/themeOverview/themeIndicator/th
 import AddTheme from "./theme/addTheme/addTheme";
 
 class Cluster extends Component {
-  handleClick = e => {
-    console.log("click ", e);
-  };
-
   state = {
     sidenav: [
       { title: "概览", icon: "icon-common", link: "/cluster/overview" },
@@ -35,6 +31,10 @@ class Cluster extends Component {
       { title: "消费者", icon: "icon-customer", link: "/cluster/consumer" },
       { title: "集群设置", icon: "icon-setting", link: "/cluster/clusterSet" },
     ],
+  };
+
+  handleClick = e => {
+    console.log("click ", e);
   };
 
   render() {
