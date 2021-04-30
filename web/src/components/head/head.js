@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import "./head.scss";
 import { Menu, Affix } from "antd";
+import {clusterList} from "@/api";
+
 const { SubMenu } = Menu;
 
 class Header extends Component {
@@ -26,6 +28,12 @@ class Header extends Component {
     ],
     selectedIndex: -1,
   };
+
+  componentDidMount() {
+    clusterList().then(res => {
+      console.log(res)
+    })
+  }
 
   selectNav(index) {
     this.setState({
