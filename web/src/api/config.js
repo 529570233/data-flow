@@ -5,7 +5,6 @@ const devBaseUrl = 'http://localhost:7001',
 	NODE_ENV = process.env.NODE_ENV;
 
 axios.defaults.baseURL = NODE_ENV === 'production' ? prodBaseUrl : devBaseUrl;
-// axios.defaults.withCredentials = true; //允许携带cookie
 
 // axios.interceptors.request.use(
 // 	config => {
@@ -14,11 +13,11 @@ axios.defaults.baseURL = NODE_ENV === 'production' ? prodBaseUrl : devBaseUrl;
 // 	err => Promise.reject(err)
 // );
 
-// axios.interceptors.response.use(
-// 	res => {
-// 		return res.data;
-// 	},
-// 	err => Promise.reject(err)
-// );
+axios.interceptors.response.use(
+	res => {
+		return res.data;
+	},
+	err => Promise.reject(err)
+);
 
 export default axios;

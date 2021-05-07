@@ -1,9 +1,10 @@
-import axios from './config';
+import axios from "./config";
 
-const { get, post } = axios;
+const { get } = axios;
 
-export const clusterList = () => get('/api/clusterList');
-export const overviewAgent = () => get('/brokers/cluster1/status');
-export const overviewTheme = () => get('/topics/cluster1/status');
-export const overviewConnection = () => get('/connects/status');
-export const overviewKsql = () => get('/ksql/status');
+// 头部导航
+export const clusterMenu = () => get("/api/clusterMenu");
+// home页面
+export const clusterList = () => get("/api/clusterList");
+export const searchCluster = val =>
+  get("/api/searchCluster", { params: { clusterName: val } });

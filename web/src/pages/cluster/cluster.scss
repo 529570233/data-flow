@@ -1,4 +1,6 @@
 .cluster {
+    height: calc(100vh - #{$header_height});
+    overflow-y: auto;
     .side_nav_wrap {
         float: left;
         width: $side_nav_width;

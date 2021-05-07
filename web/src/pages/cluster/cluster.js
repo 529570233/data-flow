@@ -40,9 +40,9 @@ class Cluster extends Component {
   render() {
     let { sidenav } = this.state;
     return (
-      <div className="cluster">
+      <div className="cluster" ref={node => (this.clusterContainer = node)}>
         <div className="side_nav_wrap">
-          <Affix offsetTop={60}>
+          <Affix target={() => this.clusterContainer} offsetTop={0}>
             <div className="side_nav">
               <h2 className="cluster_name">集群1</h2>
               <Menu

@@ -2,37 +2,35 @@ import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import "./head.scss";
 import { Menu, Affix } from "antd";
-import {clusterList} from "@/api";
+import { clusterMenu } from "@/api";
 
 const { SubMenu } = Menu;
 
 class Header extends Component {
   state = {
-    subMenu: [
-      {
-        clusterName: "集群1",
-        link: "/cluster?cluster_name=cluster1",
-      },
-      {
-        clusterName: "集群2",
-        link: "/cluster?cluster_name=cluster2",
-      },
-      {
-        clusterName: "集群3",
-        link: "/cluster?cluster_name=cluster3",
-      },
-      {
-        clusterName: "集群4",
-        link: "/cluster?cluster_name=cluster4",
-      },
-    ],
+    subMenu: [],
     selectedIndex: -1,
   };
 
   componentDidMount() {
-    clusterList().then(res => {
-      console.log(res)
-    })
+    clusterMenu().then(res => {
+      let { code, data } = res;
+      if (code === 0) {
+        this.setState(() => {
+          if (Array.isArray(data)) {
+            data.forEach(item => {
+              item.link = `/cluster?cluster_name=${item.clusterName}`;
+            });
+            return {
+              subMenu: data,
+            };
+          } else {
+            console.error("后台返回的数据格式不正确，必须是数组！");
+            return null;
+          }
+        });
+      }
+    });
   }
 
   selectNav(index) {

@@ -1,6 +1,8 @@
 .home {
     padding: 20px;
-    .cluster {
+    height: calc(100vh - #{$header_height});
+    overflow-y: auto;
+    .cluster_category {
         border-bottom: 1px solid #dadada;
         padding-bottom: 20px;
         .title {
