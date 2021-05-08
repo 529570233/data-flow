@@ -4,6 +4,8 @@ import "./head.scss";
 import { Menu, Affix } from "antd";
 import { clusterMenu } from "@/api";
 
+import store from "@/store";
+
 const { SubMenu } = Menu;
 
 class Header extends Component {
@@ -19,7 +21,7 @@ class Header extends Component {
         this.setState(() => {
           if (Array.isArray(data)) {
             data.forEach(item => {
-              item.link = `/cluster?cluster_name=${item.clusterName}`;
+              item.link = `/cluster/${item.clusterName}`;
             });
             return {
               subMenu: data,
@@ -33,12 +35,6 @@ class Header extends Component {
     });
   }
 
-  selectNav(index) {
-    this.setState({
-      selectedIndex: index,
-    });
-  }
-
   static getDerivedStateFromProps(nextProps, prevState) {
     let { subMenu } = prevState,
       {
@@ -46,11 +42,29 @@ class Header extends Component {
       } = nextProps;
     if (pathname === "/cluster") {
       let selectedIndex = subMenu.findIndex(item => {
-        return item.link === `${pathname}${search}`;
+        // 刷新浏览器，url中的中文会被浏览器转义，路由跳转则不会转义
+        return (
+          encodeURI(item.link) === `${pathname}${search}` ||
+          item.link === `${pathname}${search}`
+        );
       });
       return { selectedIndex };
+    } else if (pathname.substring(0, 9) === "/cluster/") {
+      // 切换侧边栏时，保持选中项不变
+      return null;
     }
-    return null;
+    return { selectedIndex: -1 };
+  }
+
+  selectNav(index) {
+    this.props.store.dispatch({
+      type: "routerParam",
+      payload: 333,
+    });
+
+    this.setState(() => ({
+      selectedIndex: index,
+    }));
   }
 
   render() {
@@ -78,7 +92,7 @@ class Header extends Component {
               return (
                 <Menu.Item
                   key={clusterName}
-                  onClick={() => this.selectNav(index)}
+                  onClick={this.selectNav.bind(this, index)}
                 >
                   <NavLink
                     to={link}

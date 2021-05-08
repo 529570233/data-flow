@@ -28,7 +28,6 @@ class Home extends Component {
   }
 
   searchRes(res) {
-    console.log(res);
     let { code, data } = res;
     if (code === 0) {
       this.setState(() => ({ clusterList: data }));

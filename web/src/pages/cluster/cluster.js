@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch, Redirect } from "react-router-dom";
 import "./cluster.scss";
 import { Menu, Affix } from "antd";
 import Overview from "./overview/overview";
@@ -20,6 +20,8 @@ import ConsumerDetails from "./consumer/consumerDetails/consumerDetails";
 import ThemeIndicator from "./theme/themeDetails/themeOverview/themeIndicator/themeIndicator";
 import AddTheme from "./theme/addTheme/addTheme";
 
+import store from "@/store";
+
 class Cluster extends Component {
   state = {
     sidenav: [
@@ -39,6 +41,10 @@ class Cluster extends Component {
 
   render() {
     let { sidenav } = this.state;
+    // let {location} = this.props;
+    // console.log(this.props)
+    let routerParam = this.props.store.getState();
+    console.log(routerParam);
     return (
       <div className="cluster" ref={node => (this.clusterContainer = node)}>
         <div className="side_nav_wrap">
@@ -68,8 +74,8 @@ class Cluster extends Component {
         </div>
         <div className="cluster_content">
           <Switch>
-            <Route path="/cluster" exact component={Overview} />
-            <Route path="/cluster/overview" exact component={Overview} />
+            {/* <Route path="/cluster" exact component={Overview} /> */}
+            <Route path="/cluster/:routerParam/overview" exact component={Overview} />
             <Route path="/cluster/theme" exact component={Theme} />
             <Route path="/cluster/theme/add" exact component={AddTheme} />
             <Route
@@ -110,6 +116,7 @@ class Cluster extends Component {
               exact
               component={ConnectionDetails}
             />
+            <Redirect from="/cluster" to="/cluster/overview" />
           </Switch>
         </div>
       </div>

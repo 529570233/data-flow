@@ -8,7 +8,6 @@ const SearchInput = props => {
   let onSearch = val => {
     if(val.trim()==="") return;
     searchCluster(val).then(res => {
-      console.log(res);
       searchRes(res)
     })
   };
