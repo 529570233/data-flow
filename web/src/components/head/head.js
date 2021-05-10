@@ -3,8 +3,8 @@ import { NavLink, withRouter } from "react-router-dom";
 import "./head.scss";
 import { Menu, Affix } from "antd";
 import { clusterMenu } from "@/api";
-
-import store from "@/store";
+import { connect } from "react-redux";
+import action from "@/store/action";
 
 const { SubMenu } = Menu;
 
@@ -56,15 +56,11 @@ class Header extends Component {
     return { selectedIndex: -1 };
   }
 
-  selectNav(index) {
-    this.props.store.dispatch({
-      type: "routerParam",
-      payload: 333,
-    });
-
+  selectNav(index, clusterName) {
     this.setState(() => ({
       selectedIndex: index,
     }));
+    this.props.saveRouterParam(clusterName);
   }
 
   render() {
@@ -92,7 +88,7 @@ class Header extends Component {
               return (
                 <Menu.Item
                   key={clusterName}
-                  onClick={this.selectNav.bind(this, index)}
+                  onClick={this.selectNav.bind(this, index, clusterName)}
                 >
                   <NavLink
                     to={link}
@@ -131,4 +127,4 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header);
+export default connect(null, action.routerParamAction)(withRouter(Header));

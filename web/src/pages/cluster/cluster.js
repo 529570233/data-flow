@@ -19,8 +19,7 @@ import AddConnection from "./connection/connectionDetails/chooseConnectionCatego
 import ConsumerDetails from "./consumer/consumerDetails/consumerDetails";
 import ThemeIndicator from "./theme/themeDetails/themeOverview/themeIndicator/themeIndicator";
 import AddTheme from "./theme/addTheme/addTheme";
-
-import store from "@/store";
+import { connect } from "react-redux";
 
 class Cluster extends Component {
   state = {
@@ -40,11 +39,8 @@ class Cluster extends Component {
   };
 
   render() {
-    let { sidenav } = this.state;
-    // let {location} = this.props;
-    // console.log(this.props)
-    let routerParam = this.props.store.getState();
-    console.log(routerParam);
+    let { sidenav } = this.state,
+      { routerParam } = this.props;
     return (
       <div className="cluster" ref={node => (this.clusterContainer = node)}>
         <div className="side_nav_wrap">
@@ -74,9 +70,25 @@ class Cluster extends Component {
         </div>
         <div className="cluster_content">
           <Switch>
-            {/* <Route path="/cluster" exact component={Overview} /> */}
-            <Route path="/cluster/:routerParam/overview" exact component={Overview} />
-            <Route path="/cluster/theme" exact component={Theme} />
+            <Route
+              exact
+              path={`/cluster/${routerParam}`}
+              render={props => {
+                console.log(11111)
+                console.log(props)
+                return null;
+              }}
+            />
+            <Route
+              path={`/cluster/${routerParam}/overview`}
+              exact
+              component={Overview}
+            />
+            <Route
+              path={`/cluster/${routerParam}/theme`}
+              exact
+              component={Theme}
+            />
             <Route path="/cluster/theme/add" exact component={AddTheme} />
             <Route
               path="/cluster/theme/*/indicator"
@@ -116,7 +128,10 @@ class Cluster extends Component {
               exact
               component={ConnectionDetails}
             />
-            <Redirect from="/cluster" to="/cluster/overview" />
+            {/* <Redirect
+              from={`/cluster/${routerParam}`}
+              to={`/cluster/${routerParam}/overview`}
+            /> */}
           </Switch>
         </div>
       </div>
@@ -124,4 +139,4 @@ class Cluster extends Component {
   }
 }
 
-export default Cluster;
+export default connect(state => ({ ...state.routerParamReducer }))(Cluster);

@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import routerParam22 from "./routerParam";
+import routerParamReducer from "./routerParam";
 
 let reducer = combineReducers({
-  routerParam22,
+    routerParamReducer,
 });
 
 export default reducer;
