@@ -18,7 +18,10 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/home" exact component={Home} />
             {/* 使用redux时，在定义connect()组件的路由时，会隐式地将一些额外的参数传递给它，所以应该使用render而不是component，否则报警告 */}
-            <Route path="/cluster" render={() => <Cluster/>} />
+            <Route
+              path="/cluster/:clusterId"
+              render={props => <Cluster {...props} />}
+            />
             <Redirect to={"/home"}></Redirect>
           </Switch>
         </div>

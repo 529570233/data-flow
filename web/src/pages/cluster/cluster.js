@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Route, Switch, Redirect } from "react-router-dom";
+import { NavLink, Route, Switch, Redirect, withRouter } from "react-router-dom";
 import "./cluster.scss";
 import { Menu, Affix } from "antd";
 import Overview from "./overview/overview";
@@ -24,13 +24,41 @@ import { connect } from "react-redux";
 class Cluster extends Component {
   state = {
     sidenav: [
-      { title: "概览", icon: "icon-common", link: "/cluster/overview" },
-      { title: "代理", icon: "icon-broker", link: "/cluster/agent" },
-      { title: "主题", icon: "icon-topic", link: "/cluster/theme" },
-      { title: "连接", icon: "icon-connector", link: "/cluster/connection" },
-      { title: "KSQL DB", icon: "icon-ksqldb", link: "/cluster/ksqlDb" },
-      { title: "消费者", icon: "icon-customer", link: "/cluster/consumer" },
-      { title: "集群设置", icon: "icon-setting", link: "/cluster/clusterSet" },
+      {
+        title: "概览",
+        icon: "icon-common",
+        link: "/overview",
+      },
+      {
+        title: "代理",
+        icon: "icon-broker",
+        link: "/agent",
+      },
+      {
+        title: "主题",
+        icon: "icon-topic",
+        link: "/theme",
+      },
+      {
+        title: "连接",
+        icon: "icon-connector",
+        link: "/connection",
+      },
+      {
+        title: "KSQL DB",
+        icon: "icon-ksqldb",
+        link: "/ksqlDb",
+      },
+      {
+        title: "消费者",
+        icon: "icon-customer",
+        link: "/consumer",
+      },
+      {
+        title: "集群设置",
+        icon: "icon-setting",
+        link: "/clusterSet",
+      },
     ],
   };
 
@@ -40,7 +68,14 @@ class Cluster extends Component {
 
   render() {
     let { sidenav } = this.state,
-      { routerParam } = this.props;
+      {
+        match: {
+          url,
+          params: { clusterId: routerParam },
+        },
+      } = this.props;
+
+    let routerReg = /(.*)([^\/]+)(.*)/g;
     return (
       <div className="cluster" ref={node => (this.clusterContainer = node)}>
         <div className="side_nav_wrap">
@@ -57,7 +92,7 @@ class Cluster extends Component {
                   let { title, icon, link } = item;
                   return (
                     <Menu.Item key={index}>
-                      <NavLink to={link} exact>
+                      <NavLink to={url + link} exact>
                         <span className={`${icon} side_nav_icon`}></span>
                         {title}
                       </NavLink>
@@ -71,15 +106,6 @@ class Cluster extends Component {
         <div className="cluster_content">
           <Switch>
             <Route
-              exact
-              path={`/cluster/${routerParam}`}
-              render={props => {
-                console.log(11111)
-                console.log(props)
-                return null;
-              }}
-            />
-            <Route
               path={`/cluster/${routerParam}/overview`}
               exact
               component={Overview}
@@ -89,49 +115,85 @@ class Cluster extends Component {
               exact
               component={Theme}
             />
-            <Route path="/cluster/theme/add" exact component={AddTheme} />
             <Route
-              path="/cluster/theme/*/indicator"
+              path={`/cluster/${routerParam}/add`}
+              exact
+              component={AddTheme}
+            />
+            <Route
+              path={`/cluster/${routerParam}/theme/*/indicator`}
               exact
               component={ThemeIndicator}
             />
-            <Route path="/cluster/theme/*" exact component={ThemeDetails} />
-            <Route path="/cluster/agent" exact component={Agent} />
             <Route
-              path="/cluster/agent/indicator"
+              path={`/cluster/${routerParam}/theme/*`}
               exact
-              component={AgentIndicator}
+              component={ThemeDetails}
             />
-            <Route path="/cluster/agent/*" exact component={AgentDetails} />
-            <Route path="/cluster/ksqlDb" exact component={KsqlDb} />
-            <Route path="/cluster/ksqlDb/*" exact component={KsqlDbDetails} />
-            <Route path="/cluster/consumer" exact component={Consumer} />
             <Route
-              path="/cluster/consumer/*"
+              path={`/cluster/${routerParam}/agent`}
+              exact
+              component={Agent}
+            />
+            <Route
+              path={`/cluster/${routerParam}/agent/indicator`}
+              exact
+              render={props => <AgentIndicator {...props} />}
+            />
+            <Route
+              path={`/cluster/${routerParam}/agent/*`}
+              exact
+              render={props => <AgentDetails {...props} />}
+            />
+            <Route
+              path={`/cluster/${routerParam}/ksqlDb`}
+              exact
+              component={KsqlDb}
+            />
+            <Route
+              path={`/cluster/${routerParam}/ksqlDb/*`}
+              exact
+              component={KsqlDbDetails}
+            />
+            <Route
+              path={`/cluster/${routerParam}/consumer`}
+              exact
+              component={Consumer}
+            />
+            <Route
+              path={`/cluster/${routerParam}/consumer/*"`}
               exact
               component={ConsumerDetails}
             />
-            <Route path="/cluster/clusterSet" exact component={ClusterSet} />
-            <Route path="/cluster/connection" exact component={Connection} />
             <Route
-              path="/cluster/connection/*/choose"
+              path={`/cluster/${routerParam}/clusterSet`}
+              exact
+              component={ClusterSet}
+            />
+            <Route
+              path={`/cluster/${routerParam}/connection`}
+              exact
+              component={Connection}
+            />
+            <Route
+              path={`/cluster/${routerParam}/connection/*/choose`}
               exact
               component={ChooseConnectionCategory}
             />
             <Route
-              path="/cluster/connection/*/choose/add"
+              path={`/cluster/${routerParam}/connection/*/choose/add`}
               exact
               component={AddConnection}
             />
             <Route
-              path="/cluster/connection/*"
+              path={`/cluster/${routerParam}/connection/*`}
               exact
               component={ConnectionDetails}
             />
-            {/* <Redirect
+            <Redirect
               from={`/cluster/${routerParam}`}
               to={`/cluster/${routerParam}/overview`}
-            /> */}
+            />
           </Switch>
         </div>
       </div>
@@ -139,4 +201,6 @@ class Cluster extends Component {
   }
 }
 
-export default connect(state => ({ ...state.routerParamReducer }))(Cluster);
+export default connect(state => ({ ...state.routerParamReducer }))(
+  withRouter(Cluster)
+);

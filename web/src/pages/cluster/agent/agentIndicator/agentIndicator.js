@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./agentIndicator.scss";
-// import qs from "qs";
 import { Breadcrumb, Select, DatePicker, Col, Row, Card } from "antd";
 import ReactEChartsCore from "echarts-for-react/lib/core";
 import * as echarts from "echarts/core";
 import "@/utils/echarts";
+import { connect } from "react-redux";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -99,18 +99,16 @@ class AgentIndicator extends Component {
         },
       ],
     };
-  };
+  }
 
   render() {
-    // let {
-    //     location: { search },
-    //   } = this.props,
-    //   indicatorName = qs.parse(search.substring(1)).indicator_name;
+    let { routerParam } = this.props;
+    console.log(this.props)
     return (
       <div className="agent_indicator">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/agent">代理概览</Link>
+            <Link to={`/cluster/${routerParam}/agent`}>代理概览</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>指标</Breadcrumb.Item>
         </Breadcrumb>
@@ -190,4 +188,6 @@ class AgentIndicator extends Component {
   }
 }
 
-export default AgentIndicator;
+export default connect(state => ({ ...state.routerParamReducer }))(
+  AgentIndicator
+);

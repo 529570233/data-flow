@@ -21,7 +21,7 @@ class Header extends Component {
         this.setState(() => {
           if (Array.isArray(data)) {
             data.forEach(item => {
-              item.link = `/cluster/${item.clusterName}`;
+              item.link = `/cluster/${item.clusterId}`;
             });
             return {
               subMenu: data,
@@ -33,34 +33,38 @@ class Header extends Component {
         });
       }
     });
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    let { subMenu } = prevState,
-      {
-        location: { search, pathname },
-      } = nextProps;
-    if (pathname === "/cluster") {
-      let selectedIndex = subMenu.findIndex(item => {
-        // 刷新浏览器，url中的中文会被浏览器转义，路由跳转则不会转义
-        return (
-          encodeURI(item.link) === `${pathname}${search}` ||
-          item.link === `${pathname}${search}`
-        );
-      });
-      return { selectedIndex };
-    } else if (pathname.substring(0, 9) === "/cluster/") {
-      // 切换侧边栏时，保持选中项不变
-      return null;
+    let { selectedIndex, subMenu } = this.state;
+    if (selectedIndex !== -1) {
+      this.props.saveRouterParam(subMenu[selectedIndex].clusterId);
     }
-    return { selectedIndex: -1 };
   }
 
-  selectNav(index, clusterName) {
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   let { subMenu } = prevState,
+  //     {
+  //       location: { search, pathname },
+  //     } = nextProps;
+  //   if (pathname === "/cluster") {
+  //     let selectedIndex = subMenu.findIndex(item => {
+  //       // 刷新浏览器，url中的中文会被浏览器转义，路由跳转则不会转义
+  //       return (
+  //         encodeURI(item.link) === `${pathname}${search}` ||
+  //         item.link === `${pathname}${search}`
+  //       );
+  //     });
+  //     return { selectedIndex };
+  //   } else if (pathname.substring(0, 9) === "/cluster/") {
+  //     // 切换侧边栏时，保持选中项不变
+  //     return null;
+  //   }
+  //   return { selectedIndex: -1 };
+  // }
+
+  selectNav(index, clusterId) {
     this.setState(() => ({
       selectedIndex: index,
     }));
-    this.props.saveRouterParam(clusterName);
+    this.props.saveRouterParam(clusterId);
   }
 
   render() {
@@ -84,11 +88,11 @@ class Header extends Component {
             }
           >
             {subMenu.map((item, index) => {
-              let { clusterName, link } = item;
+              let { clusterId, clusterName, link } = item;
               return (
                 <Menu.Item
-                  key={clusterName}
-                  onClick={this.selectNav.bind(this, index, clusterName)}
+                  key={clusterId}
+                  onClick={this.selectNav.bind(this, index, clusterId)}
                 >
                   <NavLink
                     to={link}
