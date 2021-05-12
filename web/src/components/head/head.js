@@ -39,17 +39,16 @@ class Header extends Component {
         location: { pathname },
         saveRouterParam,
       } = this.props;
+      console.log(pathname)
     if (pathname.substring(0, 9) === "/cluster/") {
+      
       let selectedIndex = subMenu.findIndex(item => {
         // 刷新浏览器时，保持url不变
-        let selectd = pathname.includes(item.link);
-        if (selectd) {
+        console.log(pathname.includes(item.link))
+        if (pathname.includes(item.link)) {
           saveRouterParam(item.clusterId);
         }
-        return selectd;
       });
-      console.log(selectedIndex);
-      return { selectedIndex };
     }
   }
 
@@ -63,7 +62,6 @@ class Header extends Component {
         // 刷新浏览器时，保持url不变
         return pathname.includes(item.link);
       });
-      console.log(selectedIndex);
       return { selectedIndex };
     }
     // else if (pathname.substring(0, 9) === "/cluster/") {
