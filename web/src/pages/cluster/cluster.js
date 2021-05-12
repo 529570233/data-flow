@@ -75,7 +75,7 @@ class Cluster extends Component {
         },
       } = this.props;
 
-    let routerReg = /(.*)([^\/]+)(.*)/g;
+    // let routerReg = /(.*)([^\/]+)(.*)/g;
     return (
       <div className="cluster" ref={node => (this.clusterContainer = node)}>
         <div className="side_nav_wrap">

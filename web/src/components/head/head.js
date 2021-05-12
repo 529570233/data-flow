@@ -33,32 +33,45 @@ class Header extends Component {
         });
       }
     });
-    let { selectedIndex, subMenu } = this.state;
-    if (selectedIndex !== -1) {
-      this.props.saveRouterParam(subMenu[selectedIndex].clusterId);
+
+    let { subMenu } = this.state,
+      {
+        location: { pathname },
+        saveRouterParam,
+      } = this.props;
+    if (pathname.substring(0, 9) === "/cluster/") {
+      let selectedIndex = subMenu.findIndex(item => {
+        // 刷新浏览器时，保持url不变
+        let selectd = pathname.includes(item.link);
+        if (selectd) {
+          saveRouterParam(item.clusterId);
+        }
+        return selectd;
+      });
+      console.log(selectedIndex);
+      return { selectedIndex };
     }
   }
 
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   let { subMenu } = prevState,
-  //     {
-  //       location: { search, pathname },
-  //     } = nextProps;
-  //   if (pathname === "/cluster") {
-  //     let selectedIndex = subMenu.findIndex(item => {
-  //       // 刷新浏览器，url中的中文会被浏览器转义，路由跳转则不会转义
-  //       return (
-  //         encodeURI(item.link) === `${pathname}${search}` ||
-  //         item.link === `${pathname}${search}`
-  //       );
-  //     });
-  //     return { selectedIndex };
-  //   } else if (pathname.substring(0, 9) === "/cluster/") {
-  //     // 切换侧边栏时，保持选中项不变
-  //     return null;
-  //   }
-  //   return { selectedIndex: -1 };
-  // }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let { subMenu } = prevState,
+      {
+        location: { pathname },
+      } = nextProps;
+    if (pathname.substring(0, 9) === "/cluster/") {
+      let selectedIndex = subMenu.findIndex(item => {
+        // 刷新浏览器时，保持url不变
+        return pathname.includes(item.link);
+      });
+      console.log(selectedIndex);
+      return { selectedIndex };
+    }
+    // else if (pathname.substring(0, 9) === "/cluster/") {
+    //   // 切换侧边栏时，保持选中项不变
+    //   return null;
+    // }
+    return { selectedIndex: -1 };
+  }
 
   selectNav(index, clusterId) {
     this.setState(() => ({
