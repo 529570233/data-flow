@@ -33,7 +33,10 @@ class KsqlDb extends Component {
   };
 
   render() {
-    let { tableData } = this.state;
+    let { tableData } = this.state,
+      {
+        location: { pathname },
+      } = this.props;
 
     return (
       <div className="ksqlDB">
@@ -50,15 +53,23 @@ class KsqlDb extends Component {
               dataIndex="name"
               align="center"
               render={(text, record) => (
-                <Link to={`/cluster/ksqlDb/${text}?ksqlDb_name=${text}`}>
+                <Link to={`${pathname}/details?ksqlDb_name=${text}`}>
                   {text}
                 </Link>
               )}
             />
             <ColumnGroup title="有效性">
               <Column align="center" title="复制分区" dataIndex="copy_area" />
-              <Column align="center" title="非同步跟随者" dataIndex="async_follower" />
-              <Column align="center" title="非同步观察者" dataIndex="async_observer" />
+              <Column
+                align="center"
+                title="非同步跟随者"
+                dataIndex="async_follower"
+              />
+              <Column
+                align="center"
+                title="非同步观察者"
+                dataIndex="async_observer"
+              />
             </ColumnGroup>
           </Table>
         </div>

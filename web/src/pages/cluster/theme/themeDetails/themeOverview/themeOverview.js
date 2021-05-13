@@ -32,9 +32,12 @@ class ThemeOverview extends Component {
     ],
   };
   goIndicatorPage(name) {
-    let {themeName} = this.props;
+    let {
+      themeName,
+      location: { pathname },
+    } = this.props;
     this.props.history.push(
-      `/cluster/theme/${themeName}/indicator?indicator_name=${name}`
+      `${pathname}/indicator?theme_name=${themeName}&indicator_name=${name}`
     );
   }
   render() {
@@ -84,11 +87,23 @@ class ThemeOverview extends Component {
         </div>
         <div className="part_tatle">
           <Table dataSource={tableData} bordered>
-            <Column align="center" title="ksqlDB应用程序名称" dataIndex="name" />
+            <Column
+              align="center"
+              title="ksqlDB应用程序名称"
+              dataIndex="name"
+            />
             <ColumnGroup title="有效性">
               <Column align="center" title="复制分区" dataIndex="copy_area" />
-              <Column align="center" title="非同步跟随者" dataIndex="async_follower" />
-              <Column align="center" title="非同步观察者" dataIndex="async_observer" />
+              <Column
+                align="center"
+                title="非同步跟随者"
+                dataIndex="async_follower"
+              />
+              <Column
+                align="center"
+                title="非同步观察者"
+                dataIndex="async_observer"
+              />
             </ColumnGroup>
           </Table>
         </div>

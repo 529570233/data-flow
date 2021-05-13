@@ -5,6 +5,8 @@ import { Tabs, Breadcrumb } from "antd";
 import ThemeIndicatorProduction from "./themeIndicatorProduction/themeIndicatorProduction";
 import ThemeIndicatorConsume from "./themeIndicatorConsume/themeIndicatorConsume";
 import ThemeIndicatorAvailability from "./themeIndicatorAvailability/themeIndicatorAvailability";
+import qs from "qs";
+import { connect } from "react-redux";
 
 const { TabPane } = Tabs;
 class ThemeIndicator extends Component {
@@ -13,11 +15,20 @@ class ThemeIndicator extends Component {
   }
 
   render() {
+    let {
+      routerParam,
+      location: { search },
+    } = this.props;
+    let themeName = qs.parse(search.substring(1)).theme_name;
+
     return (
       <div className="theme_indicator">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/theme">所有主题</Link>
+            <Link to={`/cluster/${routerParam}/theme`}>所有主题</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to={`/cluster/${routerParam}/theme/details?theme_name=${themeName}`}>{themeName}</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>指标</Breadcrumb.Item>
         </Breadcrumb>
@@ -43,4 +54,6 @@ class ThemeIndicator extends Component {
   }
 }
 
-export default ThemeIndicator;
+export default connect(state => ({ ...state.routerParamReducer }))(
+  ThemeIndicator
+);

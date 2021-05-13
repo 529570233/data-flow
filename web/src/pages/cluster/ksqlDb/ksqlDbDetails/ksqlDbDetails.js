@@ -8,6 +8,7 @@ import KsqlDbDetailsStreams from "./ksqlDbDetailsStreams/ksqlDbDetailsStreams";
 import KsqlDbDetailsStreamsDetails from "./ksqlDbDetailsStreams/ksqlDbDetailsStreamsDetails/ksqlDbDetailsStreamsDetails";
 import KsqlDbDetailsTable from "./ksqlDbDetailsTable/ksqlDbDetailsTable";
 import KsqlDbDetailsFlow from "./ksqlDbDetailsFlow/ksqlDbDetailsFlow";
+import { connect } from "react-redux";
 
 const { TabPane } = Tabs;
 class KsqlDbDetails extends Component {
@@ -17,6 +18,7 @@ class KsqlDbDetails extends Component {
   render() {
     let {
         location: { search },
+        routerParam,
       } = this.props,
       ksqlDbName = qs.parse(search.substring(1)).ksqlDb_name;
 
@@ -24,7 +26,7 @@ class KsqlDbDetails extends Component {
       <div className="KsqlDB_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/ksqlDb">KSQLDB</Link>
+            <Link to={`/cluster/${routerParam}/ksqlDb`}>KSQLDB</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>{ksqlDbName}</Breadcrumb.Item>
         </Breadcrumb>
@@ -40,12 +42,12 @@ class KsqlDbDetails extends Component {
             <TabPane tab="streams" key="3">
               <Switch>
                 <Route
-                  path={`/cluster/ksqlDb/${ksqlDbName}`}
+                  path={`/cluster/${routerParam}/ksqlDb/details`}
                   exact
                   component={KsqlDbDetailsStreams}
                 />
                 <Route
-                  path={`/cluster/ksqlDb/${ksqlDbName}/*`}
+                  path={`/cluster/${routerParam}/ksqlDb/details/${ksqlDbName}/*`}
                   component={KsqlDbDetailsStreamsDetails}
                 />
               </Switch>
@@ -63,4 +65,6 @@ class KsqlDbDetails extends Component {
   }
 }
 
-export default KsqlDbDetails;
+export default connect(state => ({ ...state.routerParamReducer }))(
+  KsqlDbDetails
+);

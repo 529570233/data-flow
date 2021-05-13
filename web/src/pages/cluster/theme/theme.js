@@ -39,7 +39,10 @@ class Theme extends Component {
     ],
   };
   render() {
-    let { tableData } = this.state;
+    let { tableData } = this.state,
+      {
+        location: { pathname },
+      } = this.props;
     return (
       <div className="theme">
         <h2 className="theme_title">所有主题</h2>
@@ -60,7 +63,7 @@ class Theme extends Component {
               </Col>
               <Col span={6}>
                 <div className="add_theme_box">
-                  <Link to="/cluster/theme/add">
+                  <Link to={`${pathname}/add`}>
                     <Button type="primary" icon="plus">
                       新增主题
                     </Button>
@@ -75,7 +78,7 @@ class Theme extends Component {
               dataIndex="name"
               align="center"
               render={(text, record) => (
-                <Link to={`/cluster/theme/${text}?theme_name=${text}`}>
+                <Link to={`${pathname}/details?theme_name=${text}`}>
                   {text}
                 </Link>
               )}

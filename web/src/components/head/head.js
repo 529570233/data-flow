@@ -15,6 +15,11 @@ class Header extends Component {
   };
 
   componentDidMount() {
+    let {
+      location: { pathname },
+      saveRouterParam,
+    } = this.props;
+
     clusterMenu().then(res => {
       let { code, data } = res;
       if (code === 0) {
@@ -23,7 +28,19 @@ class Header extends Component {
             data.forEach(item => {
               item.link = `/cluster/${item.clusterId}`;
             });
+            
+            if (pathname.substring(0, 9) === "/cluster/") {
+              var selectedIndex = data.findIndex(item => {
+                // 刷新浏览器时，把clusterId保存到redux中
+                let isExat = pathname.includes(item.link);
+                if (isExat) {
+                  saveRouterParam(item.clusterId);
+                }
+                return isExat;
+              });
+            }
             return {
+              selectedIndex,
               subMenu: data,
             };
           } else {
@@ -33,42 +50,6 @@ class Header extends Component {
         });
       }
     });
-
-    let { subMenu } = this.state,
-      {
-        location: { pathname },
-        saveRouterParam,
-      } = this.props;
-      console.log(pathname)
-    if (pathname.substring(0, 9) === "/cluster/") {
-      
-      let selectedIndex = subMenu.findIndex(item => {
-        // 刷新浏览器时，保持url不变
-        console.log(pathname.includes(item.link))
-        if (pathname.includes(item.link)) {
-          saveRouterParam(item.clusterId);
-        }
-      });
-    }
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    let { subMenu } = prevState,
-      {
-        location: { pathname },
-      } = nextProps;
-    if (pathname.substring(0, 9) === "/cluster/") {
-      let selectedIndex = subMenu.findIndex(item => {
-        // 刷新浏览器时，保持url不变
-        return pathname.includes(item.link);
-      });
-      return { selectedIndex };
-    }
-    // else if (pathname.substring(0, 9) === "/cluster/") {
-    //   // 切换侧边栏时，保持选中项不变
-    //   return null;
-    // }
-    return { selectedIndex: -1 };
   }
 
   selectNav(index, clusterId) {

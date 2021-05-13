@@ -3,25 +3,27 @@ import "./connectionDetails.scss";
 import { Link } from "react-router-dom";
 import { Card, Breadcrumb, Button } from "antd";
 import qs from "qs";
+import { connect } from "react-redux";
 
 class ConnectionDetails extends Component {
   render() {
     let {
-        location: { search },
+        location: { pathname, search },
+        routerParam,
       } = this.props,
       connectionName = qs.parse(search.substring(1)).connection_name;
     return (
       <div className="connection_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/connection">所有连接集群</Link>
+            <Link to={`/cluster/${routerParam}/connection`}>所有连接集群</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>{connectionName}</Breadcrumb.Item>
         </Breadcrumb>
         <h2 className="connection_title">{connectionName}</h2>
         <div className="connection_details_cards">
           <div className="add_connection">
-            <Link to={`/cluster/connection/${connectionName}/choose`}>
+            <Link to={`${pathname}/choose?connection_name=${connectionName}`}>
               <Button type="primary" icon="plus">
                 新建连接器
               </Button>
@@ -44,4 +46,6 @@ class ConnectionDetails extends Component {
   }
 }
 
-export default ConnectionDetails;
+export default connect(state => ({ ...state.routerParamReducer }))(
+  ConnectionDetails
+);

@@ -3,6 +3,8 @@ import "./addConnection.scss";
 import { Link } from "react-router-dom";
 import { Breadcrumb, Button, Steps, Row, Col } from "antd";
 import SetConnection from "./setConnection/setConnection";
+import qs from "qs";
+import { connect } from "react-redux";
 
 const { Step } = Steps;
 class AddConnection extends Component {
@@ -43,25 +45,26 @@ class AddConnection extends Component {
 
   render() {
     let {
-        location: { pathname },
+        location: { search },
+        routerParam
       } = this.props,
-      connectionName = /\/cluster\/connection\/(.+)\/choose/.exec(pathname)[1];
+      connectionName = qs.parse(search.substring(1)).connection_name;
     let { current, stepsLeft, stepsRight } = this.state;
     return (
       <div className="add_connection">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/connection">所有连接集群</Link>
+            <Link to={`/cluster/${routerParam}/connection`}>所有连接集群</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <Link
-              to={`/cluster/connection/${connectionName}?connection_name=${connectionName}`}
+              to={`/cluster/${routerParam}/connection/details?connection_name=${connectionName}`}
             >
               {connectionName}
             </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <Link to={`/cluster/connection/${connectionName}/choose`}>
+            <Link to={`/cluster/${routerParam}/connection/details/choose?connection_name=${connectionName}`}>
               浏览
             </Link>
           </Breadcrumb.Item>
@@ -119,4 +122,6 @@ class AddConnection extends Component {
   }
 }
 
-export default AddConnection;
+export default connect(state => ({ ...state.routerParamReducer }))(
+  AddConnection
+);

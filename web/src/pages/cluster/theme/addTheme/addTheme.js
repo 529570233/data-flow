@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./addTheme.scss";
 import { Link } from "react-router-dom";
 import { Breadcrumb, Form, Input, Button, InputNumber } from "antd";
+import { connect } from "react-redux";
 
 class AddTheme extends Component {
   handleSubmit = e => {
@@ -14,12 +15,15 @@ class AddTheme extends Component {
   };
 
   render() {
-    const { getFieldDecorator } = this.props.form;
+    let {
+      form: { getFieldDecorator },
+      routerParam,
+    } = this.props;
     return (
       <div className="add_theme">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/theme">所有主题</Link>
+            <Link to={`/cluster/${routerParam}/theme`}>所有主题</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>新增主题</Breadcrumb.Item>
         </Breadcrumb>
@@ -51,4 +55,6 @@ class AddTheme extends Component {
   }
 }
 
-export default Form.create({ name: "AddTheme" })(AddTheme);
+export default connect(state => ({ ...state.routerParamReducer }))(
+  Form.create({ name: "AddTheme" })(AddTheme)
+);

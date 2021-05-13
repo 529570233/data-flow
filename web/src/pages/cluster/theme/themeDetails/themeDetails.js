@@ -6,6 +6,7 @@ import qs from "qs";
 import ThemeOverview from "./themeOverview/themeOverview";
 import ThemeConfig from "./themeConfig/themeConfig";
 import ThemeFramework from "./themeFramework/themeFramework";
+import { connect } from "react-redux";
 
 const { TabPane } = Tabs;
 class ThemeDetails extends Component {
@@ -15,13 +16,14 @@ class ThemeDetails extends Component {
   render() {
     let {
         location: { search },
+        routerParam,
       } = this.props,
       themeName = qs.parse(search.substring(1)).theme_name;
     return (
       <div className="theme_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/theme">所有主题</Link>
+            <Link to={`/cluster/${routerParam}/theme`}>所有主题</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>{themeName}</Breadcrumb.Item>
         </Breadcrumb>
@@ -47,4 +49,6 @@ class ThemeDetails extends Component {
   }
 }
 
-export default ThemeDetails;
+export default connect(state => ({ ...state.routerParamReducer }))(
+  ThemeDetails
+);

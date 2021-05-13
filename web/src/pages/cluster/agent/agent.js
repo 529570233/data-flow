@@ -34,17 +34,17 @@ class Agent extends Component {
 
   goIndicatorPage(name) {
     let {
-      match: { url },
+      location: { pathname },
     } = this.props;
-    this.props.history.push(`${url}/indicator?indicator_name=${name}`);
+    this.props.history.push(`${pathname}/indicator?indicator_name=${name}`);
   }
 
   render() {
     let { tableData } = this.state,
       {
-        match: { url },
+        location: { pathname },
       } = this.props;
-      console.log(this.props)
+
     return (
       <div className="agent">
         <h2 className="agent_title">代理概览</h2>
@@ -102,7 +102,7 @@ class Agent extends Component {
                 dataIndex="name"
                 align="center"
                 render={(text, record) => (
-                  <Link to={`${url}/${text}?agent_name=${text}`}>
+                  <Link to={`${pathname}/details?agent_name=${text}`}>
                     {text}
                   </Link>
                 )}

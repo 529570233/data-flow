@@ -29,7 +29,8 @@ class Connection extends Component {
     ],
   };
   render() {
-    let { tableData } = this.state;
+    let { tableData } = this.state,
+    {match:{url}} = this.props;
     return (
       <div className="connection">
         <h2 className="connection_title">所有主题连接集群</h2>
@@ -45,7 +46,7 @@ class Connection extends Component {
               dataIndex="name"
               align="center"
               render={(text, record) => (
-                <Link to={`/cluster/connection/${text}?connection_name=${text}`}>
+                <Link to={`${url}/details?connection_name=${text}`}>
                   {text}
                 </Link>
               )}

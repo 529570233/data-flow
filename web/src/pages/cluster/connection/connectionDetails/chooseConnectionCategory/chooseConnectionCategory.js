@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./chooseConnectionCategory.scss";
 import { Link } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, Select, Card } from "antd";
+import qs from "qs";
+import { connect } from "react-redux";
 
 const { Option } = Select;
 class ChooseConnectionCategory extends Component {
@@ -20,30 +22,31 @@ class ChooseConnectionCategory extends Component {
   }
 
   goAddConnectionPage(id) {
-    console.log(this.props);
     let {
-        location: { pathname },
-      } = this.props;
-    this.props.history.push(`${pathname}/add?category=${id}`);
+      location: { pathname,search },
+    } = this.props;
+    let connectionName = qs.parse(search.substring(1)).connection_name;
+    this.props.history.push(`${pathname}/add?connection_name=${connectionName}&category=${id}`);
   }
 
   render() {
     let {
-        location: { pathname },
-      } = this.props,
-      connectionName = /\/cluster\/connection\/(.+)\/choose/.exec(
-        pathname
-      )[1];
-    let { cards } = this.state;
+      location: { search },
+      routerParam,
+    } = this.props;
+
+    let connectionName = qs.parse(search.substring(1)).connection_name,
+      { cards } = this.state;
+
     return (
       <div className="choose_connection">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/cluster/connection">所有连接集群</Link>
+            <Link to={`/cluster/${routerParam}/connection`}>所有连接集群</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <Link
-              to={`/cluster/connection/${connectionName}?connection_name=${connectionName}`}
+              to={`/cluster/${routerParam}/connection/details?connection_name=${connectionName}`}
             >
               {connectionName}
             </Link>
@@ -66,9 +69,7 @@ class ChooseConnectionCategory extends Component {
             </Col>
             <Col span={19}>
               <div className="upload_file">
-                <Button type="primary">
-                  上传连接器配置文件
-                </Button>
+                <Button type="primary">上传连接器配置文件</Button>
               </div>
             </Col>
           </Row>
@@ -96,4 +97,6 @@ class ChooseConnectionCategory extends Component {
   }
 }
 
-export default ChooseConnectionCategory;
+export default connect(state => ({ ...state.routerParamReducer }))(
+  ChooseConnectionCategory
+);

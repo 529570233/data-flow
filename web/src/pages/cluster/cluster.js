@@ -116,19 +116,19 @@ class Cluster extends Component {
               component={Theme}
             />
             <Route
-              path={`/cluster/${routerParam}/add`}
+              path={`/cluster/${routerParam}/theme/add`}
               exact
-              component={AddTheme}
+              render={props => <AddTheme {...props} />}
             />
             <Route
-              path={`/cluster/${routerParam}/theme/*/indicator`}
+              path={`/cluster/${routerParam}/theme/details/indicator`}
               exact
-              component={ThemeIndicator}
+              render={props => <ThemeIndicator {...props} />}
             />
             <Route
-              path={`/cluster/${routerParam}/theme/*`}
+              path={`/cluster/${routerParam}/theme/details`}
               exact
-              component={ThemeDetails}
+              render={props => <ThemeDetails {...props} />}
             />
             <Route
               path={`/cluster/${routerParam}/agent`}
@@ -141,7 +141,7 @@ class Cluster extends Component {
               render={props => <AgentIndicator {...props} />}
             />
             <Route
-              path={`/cluster/${routerParam}/agent/*`}
+              path={`/cluster/${routerParam}/agent/details`}
               exact
               render={props => <AgentDetails {...props} />}
             />
@@ -151,9 +151,9 @@ class Cluster extends Component {
               component={KsqlDb}
             />
             <Route
-              path={`/cluster/${routerParam}/ksqlDb/*`}
+              path={`/cluster/${routerParam}/ksqlDb/details`}
               exact
-              component={KsqlDbDetails}
+              render={props => <KsqlDbDetails {...props} />}
             />
             <Route
               path={`/cluster/${routerParam}/consumer`}
@@ -176,19 +176,19 @@ class Cluster extends Component {
               component={Connection}
             />
             <Route
-              path={`/cluster/${routerParam}/connection/*/choose`}
+              path={`/cluster/${routerParam}/connection/details/choose`}
               exact
-              component={ChooseConnectionCategory}
+              render={props => <ChooseConnectionCategory {...props} />}
             />
             <Route
-              path={`/cluster/${routerParam}/connection/*/choose/add`}
+              path={`/cluster/${routerParam}/connection/details/choose/add`}
               exact
-              component={AddConnection}
+              render={props => <AddConnection {...props} />}
             />
             <Route
-              path={`/cluster/${routerParam}/connection/*`}
+              path={`/cluster/${routerParam}/connection/details`}
               exact
-              component={ConnectionDetails}
+              render={props => <ConnectionDetails {...props} />}
             />
             <Redirect
               from={`/cluster/${routerParam}`}

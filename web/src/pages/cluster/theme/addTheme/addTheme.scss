@@ -1,4 +1,7 @@
 .add_theme {
+    .theme_title {
+        line-height: 40px;
+    }
     .add_theme_form {
         padding-top: 30px;
         @include form_item(inline-block, 80px);

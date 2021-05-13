@@ -103,7 +103,6 @@ class AgentIndicator extends Component {
 
   render() {
     let { routerParam } = this.props;
-    console.log(this.props)
     return (
       <div className="agent_indicator">
         <Breadcrumb separator=">">
