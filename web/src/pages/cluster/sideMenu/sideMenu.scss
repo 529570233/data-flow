@@ -1,0 +1,38 @@
+.side_menu {
+    .ant-menu {
+        border: none;
+
+        .ant-menu-item {
+            a {
+                color: #fff;
+            }
+        }
+
+        .ant-menu-item-selected {
+            background-color: #161c6d;
+        }
+
+        .ant-menu-item-active {
+            background-color: #161c6d;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                transform: scaleY(1);
+                opacity: 1;
+                transition: opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+            }
+        }
+
+        .side_nav_icon {
+            margin-right: 6px;
+            font-size: 16px;
+            line-height: 40px;
+            float: left;
+        }
+    }
+}

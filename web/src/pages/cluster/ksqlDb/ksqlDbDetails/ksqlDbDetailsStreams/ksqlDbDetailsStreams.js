@@ -35,7 +35,7 @@ class KsqlDbDetailsStreams extends Component {
 				production: '0B',
 			},
 		],
-		visible: false
+		visible: false,
 	};
 
 	showModal(isShow) {
@@ -45,13 +45,12 @@ class KsqlDbDetailsStreams extends Component {
 	}
 
 	render() {
-		let { tableData } = this.state,
+		let { tableData, visible } = this.state,
 			{
-				location: { search },
+				location: { pathname, search },
 			} = this.props,
 			ksqlDbName = qs.parse(search.substring(1)).ksqlDb_name;
-
-		let { visible } = this.state;
+console.log(pathname)
 		return (
 			<div className='ksqlDb_details_streams'>
 				<div className='actions'>
@@ -83,7 +82,7 @@ class KsqlDbDetailsStreams extends Component {
 						align='center'
 						render={(text, record) => (
 							<Link
-								to={`/cluster/ksqlDb/${ksqlDbName}/${text}?ksqlDb_name=${ksqlDbName}&ksqlDb_stream_name=${text}`}
+								to={`${pathname}/streamDetails?ksqlDb_name=${ksqlDbName}&ksqlDb_stream_name=${text}`}
 							>
 								{text}
 							</Link>
@@ -102,11 +101,7 @@ class KsqlDbDetailsStreams extends Component {
 							align='center'
 						/>
 					</ColumnGroup>
-					<Column
-						title='字节/秒 生产'
-						dataIndex='production'
-						align='center'
-					/>
+					<Column title='字节/秒 生产' dataIndex='production' align='center' />
 				</Table>
 			</div>
 		);

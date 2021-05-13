@@ -47,7 +47,7 @@ class KsqlDbDetails extends Component {
                   component={KsqlDbDetailsStreams}
                 />
                 <Route
-                  path={`/cluster/${routerParam}/ksqlDb/details/${ksqlDbName}/*`}
+                  path={`/cluster/${routerParam}/ksqlDb/details/streamDetails`}
                   component={KsqlDbDetailsStreamsDetails}
                 />
               </Switch>

@@ -129,7 +129,7 @@ class KsqlDbDetailsFlow extends Component {
             })}
           </Row>
           <Drawer
-            width={640}
+            width={450}
             placement="right"
             closable={false}
             onClose={this.onClose}
