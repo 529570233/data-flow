@@ -23,30 +23,35 @@ class ChooseConnectionCategory extends Component {
 
   goAddConnectionPage(id) {
     let {
-      location: { pathname,search },
+      location: { pathname, search },
     } = this.props;
     let connectionName = qs.parse(search.substring(1)).connection_name;
-    this.props.history.push(`${pathname}/add?connection_name=${connectionName}&category=${id}`);
+    this.props.history.push(
+      `${pathname}/add?connection_name=${connectionName}&category=${id}`
+    );
   }
 
   render() {
     let {
       location: { search },
-      routerParam,
+      routerParam = { clusterIdStore: "" },
     } = this.props;
 
     let connectionName = qs.parse(search.substring(1)).connection_name,
-      { cards } = this.state;
+      { cards } = this.state,
+      { clusterIdStore } = routerParam;
 
     return (
       <div className="choose_connection">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/connection`}>所有连接集群</Link>
+            <Link to={`/cluster/${clusterIdStore}/connection`}>
+              所有连接集群
+            </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <Link
-              to={`/cluster/${routerParam}/connection/details?connection_name=${connectionName}`}
+              to={`/cluster/${clusterIdStore}/connection/details?connection_name=${connectionName}`}
             >
               {connectionName}
             </Link>

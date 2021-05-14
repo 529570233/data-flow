@@ -17,13 +17,15 @@ class AddTheme extends Component {
   render() {
     let {
       form: { getFieldDecorator },
-      routerParam,
+      routerParam = { clusterIdStore: "" },
     } = this.props;
+    let { clusterIdStore } = routerParam;
+
     return (
       <div className="add_theme">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/theme`}>所有主题</Link>
+            <Link to={`/cluster/${clusterIdStore}/theme`}>所有主题</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>新增主题</Breadcrumb.Item>
         </Breadcrumb>

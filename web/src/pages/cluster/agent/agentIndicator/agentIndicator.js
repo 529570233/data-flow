@@ -102,12 +102,14 @@ class AgentIndicator extends Component {
   }
 
   render() {
-    let { routerParam } = this.props;
+    let { routerParam = { clusterIdStore: "" } } = this.props;
+    let { clusterIdStore } = routerParam;
+
     return (
       <div className="agent_indicator">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/agent`}>代理概览</Link>
+            <Link to={`/cluster/${clusterIdStore}/agent`}>代理概览</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>指标</Breadcrumb.Item>
         </Breadcrumb>

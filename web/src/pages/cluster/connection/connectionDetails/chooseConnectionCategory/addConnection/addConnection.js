@@ -46,25 +46,30 @@ class AddConnection extends Component {
   render() {
     let {
         location: { search },
-        routerParam
+        routerParam = { clusterIdStore: "" },
       } = this.props,
       connectionName = qs.parse(search.substring(1)).connection_name;
-    let { current, stepsLeft, stepsRight } = this.state;
+    let { current, stepsLeft, stepsRight } = this.state,
+      { clusterIdStore } = routerParam;
     return (
       <div className="add_connection">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/connection`}>所有连接集群</Link>
+            <Link to={`/cluster/${clusterIdStore}/connection`}>
+              所有连接集群
+            </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <Link
-              to={`/cluster/${routerParam}/connection/details?connection_name=${connectionName}`}
+              to={`/cluster/${clusterIdStore}/connection/details?connection_name=${connectionName}`}
             >
               {connectionName}
             </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/connection/details/choose?connection_name=${connectionName}`}>
+            <Link
+              to={`/cluster/${clusterIdStore}/connection/details/choose?connection_name=${connectionName}`}
+            >
               浏览
             </Link>
           </Breadcrumb.Item>

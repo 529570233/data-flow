@@ -16,14 +16,16 @@ class ThemeDetails extends Component {
   render() {
     let {
         location: { search },
-        routerParam,
+        routerParam = { clusterIdStore: "" },
       } = this.props,
       themeName = qs.parse(search.substring(1)).theme_name;
+    let { clusterIdStore } = routerParam;
+    
     return (
       <div className="theme_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/theme`}>所有主题</Link>
+            <Link to={`/cluster/${clusterIdStore}/theme`}>所有主题</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>{themeName}</Breadcrumb.Item>
         </Breadcrumb>

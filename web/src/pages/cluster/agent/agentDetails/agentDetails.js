@@ -9,14 +9,16 @@ class AgentDetails extends Component {
   render() {
     let {
         location: { search },
-        routerParam
+        routerParam = { clusterIdStore: "" },
       } = this.props,
       agentName = qs.parse(search.substring(1)).agent_name;
+    let { clusterIdStore } = routerParam;
+    
     return (
       <div className="agent_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/agent`}>代理概览</Link>
+            <Link to={`/cluster/${clusterIdStore}/agent`}>代理概览</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>{agentName}</Breadcrumb.Item>
         </Breadcrumb>

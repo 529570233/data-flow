@@ -16,19 +16,24 @@ class ThemeIndicator extends Component {
 
   render() {
     let {
-      routerParam,
+      routerParam = { clusterIdStore: "" },
       location: { search },
     } = this.props;
-    let themeName = qs.parse(search.substring(1)).theme_name;
+    let themeName = qs.parse(search.substring(1)).theme_name,
+      { clusterIdStore } = routerParam;
 
     return (
       <div className="theme_indicator">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/theme`}>所有主题</Link>
+            <Link to={`/cluster/${clusterIdStore}/theme`}>所有主题</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/theme/details?theme_name=${themeName}`}>{themeName}</Link>
+            <Link
+              to={`/cluster/${clusterIdStore}/theme/details?theme_name=${themeName}`}
+            >
+              {themeName}
+            </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>指标</Breadcrumb.Item>
         </Breadcrumb>

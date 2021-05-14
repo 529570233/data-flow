@@ -9,14 +9,18 @@ class ConnectionDetails extends Component {
   render() {
     let {
         location: { pathname, search },
-        routerParam,
+        routerParam = { clusterIdStore: "" },
       } = this.props,
       connectionName = qs.parse(search.substring(1)).connection_name;
+    let { clusterIdStore } = routerParam;
+
     return (
       <div className="connection_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/connection`}>所有连接集群</Link>
+            <Link to={`/cluster/${clusterIdStore}/connection`}>
+              所有连接集群
+            </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>{connectionName}</Breadcrumb.Item>
         </Breadcrumb>

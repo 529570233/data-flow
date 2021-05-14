@@ -18,15 +18,16 @@ class KsqlDbDetails extends Component {
   render() {
     let {
         location: { search },
-        routerParam,
+        routerParam = { clusterIdStore: "" },
       } = this.props,
       ksqlDbName = qs.parse(search.substring(1)).ksqlDb_name;
+    let { clusterIdStore } = routerParam;
 
     return (
       <div className="KsqlDB_details">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to={`/cluster/${routerParam}/ksqlDb`}>KSQLDB</Link>
+            <Link to={`/cluster/${clusterIdStore}/ksqlDb`}>KSQLDB</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>{ksqlDbName}</Breadcrumb.Item>
         </Breadcrumb>
@@ -42,12 +43,12 @@ class KsqlDbDetails extends Component {
             <TabPane tab="streams" key="3">
               <Switch>
                 <Route
-                  path={`/cluster/${routerParam}/ksqlDb/details`}
+                  path={`/cluster/${clusterIdStore}/ksqlDb/details`}
                   exact
                   component={KsqlDbDetailsStreams}
                 />
                 <Route
-                  path={`/cluster/${routerParam}/ksqlDb/details/streamDetails`}
+                  path={`/cluster/${clusterIdStore}/ksqlDb/details/streamDetails`}
                   component={KsqlDbDetailsStreamsDetails}
                 />
               </Switch>
